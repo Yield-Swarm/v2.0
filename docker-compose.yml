@@ -1,0 +1,88 @@
+# YieldSwarm — 3-service Docker Compose for local dev + self-hosted
+#
+# Services:
+#   api      — Express server (server.js) serving EJS views + API on :3000
+#   workers  — Cron job runner (scripts/worker-start.js), no HTTP server
+#
+# Usage:
+#   cp .env.example .env      # fill in your env vars ( DATABASE_URL, API keys, etc. )
+#   docker compose up -d      # starts api + workers
+#   docker compose --profile local up -d   # adds db (Postgres) for full local stack
+#
+# Profiles:
+#   local  — includes postgres db for full-stack local dev (no Neon required)
+#
+# Workers activate when POLSIA_IN_PROCESS_CRONS_ENABLED=true.
+# All secrets come from .env — never hardcoded here.
+
+version: "3.9"
+
+services:
+  # ── API + Frontend ─────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: yieldswarm-api
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: "3000"
+      # Workers stay off in compose (external cron via polsia.toml in production)
+      POLSIA_IN_PROCESS_CRONS_ENABLED: "false"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 45s
+      retries: 3
+    depends_on:
+      db:
+        condition: service_healthy
+        optional: true
+
+  # ── Background Workers (cron jobs) ─────────────────────────────────────────
+  workers:
+    build:
+      context: .
+      dockerfile: Dockerfile.workers
+    container_name: yieldswarm-workers
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      # Workers run crons in-process (no external cron needed for local dev)
+      POLSIA_IN_PROCESS_CRONS_ENABLED: "true"
+    depends_on:
+      - api
+
+  # ── Optional: Local Postgres (for --profile local) ──────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: yieldswarm-db
+    restart: unless-stopped
+    profiles:
+      - local
+    environment:
+      POSTGRES_USER: ${DB_USER:-yieldswarm}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-devpassword}
+      POSTGRES_DB: ${DB_NAME:-yieldswarm}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-yieldswarm}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  default:
+    name: yieldswarm-net
+
+volumes:
+  postgres_data:

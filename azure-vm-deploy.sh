@@ -1,0 +1,138 @@
+#!/bin/bash
+# ══════════════════════════════════════════════════════════════════════
+# YieldSwarm Azure VM Deploy Script
+# Generated: 2026-06-02 | Engineering Agent Task #2157688
+# ══════════════════════════════════════════════════════════════════════
+#
+# HOW TO USE:
+#   1. Save your RSA private key to ~/azure_key.pem (chmod 600)
+#   2. Copy this script to your local machine
+#   3. Run: bash azure-vm-deploy.sh
+#
+# REQUIREMENTS:
+#   - sshpass (brew install sshpass on Mac)
+#   - RSA private key file
+#   - .env.azure.full from this repo (pull latest from GitHub)
+
+set -e
+
+# ─── Config ─────────────────────────────────────────────────────────
+KEY_FILE="$HOME/azure_key.pem"
+ENV_FILE="./.env.azure.full"  # Path to .env.azure.full in this repo
+
+VM1_HOST="4.147.152.142"
+VM1_USER="cbreezy666@mail.com"
+VM1_NAME="Azurecloudredundancy"
+
+VM2_HOST="20.230.185.67"
+VM2_USER="cbreezy666@mail.com"
+VM2_NAME="YieldSwarmHotstandby"
+
+REMOTE_PATH="/home/cbreezy666/yieldswarm"
+
+# ─── Validate ─────────────────────────────────────────────────────────
+
+if [ ! -f "$KEY_FILE" ]; then
+  echo "ERROR: RSA key not found at $KEY_FILE"
+  echo "Save your RSA private key and set KEY_FILE path, or run:"
+  echo "  nano ~/azure_key.pem  # paste key, Ctrl+X, Y"
+  exit 1
+fi
+
+if [ ! -f "$ENV_FILE" ]; then
+  echo "ERROR: .env file not found at $ENV_FILE"
+  echo "Pull latest from GitHub: git pull origin main"
+  echo "Then find .env.azure.full in repo root"
+  exit 1
+fi
+
+SSH_OPTS="-i $KEY_FILE -o StrictHostKeyChecking=no -o ConnectTimeout=15 -o UserKnownHostsFile=/dev/null"
+
+# ─── Deploy to one VM ───────────────────────────────────────────────
+
+deploy_vm() {
+  local host="$1"
+  local user="$2"
+  local name="$3"
+
+  echo ""
+  echo "═══════════════════════════════════════════════════════"
+  echo "  Deploying to $name ($host)"
+  echo "═══════════════════════════════════════════════════════"
+
+  # Check VM is reachable
+  echo "[1/5] Checking SSH connectivity..."
+  if ! timeout 15 ssh $SSH_OPTS $user@$host 'echo "OK"' 2>/dev/null; then
+    echo "ERROR: Cannot connect to $host via SSH"
+    echo "Check: key permissions (chmod 600 $KEY_FILE), network access"
+    return 1
+  fi
+  echo "  ✓ SSH connected"
+
+  # Create backup of existing .env
+  echo "[2/5] Backing up existing .env..."
+  ssh $SSH_OPTS $user@$host "if [ -f $REMOTE_PATH/.env ]; then cp $REMOTE_PATH/.env $REMOTE_PATH/.env.backup.$(date +%Y%m%d_%H%M%S); fi" 2>/dev/null || true
+
+  # Write new .env file
+  echo "[3/5] Writing .env to $REMOTE_PATH/.env..."
+  # Use sshpass for scp with password, or direct scp with key
+  scp $SSH_OPTS "$ENV_FILE" "$user@$host:$REMOTE_PATH/.env"
+  echo "  ✓ .env written"
+
+  # Set correct permissions
+  echo "[4/5] Setting file permissions..."
+  ssh $SSH_OPTS $user@$host "chmod 600 $REMOTE_PATH/.env && chown cbreezy666:cbreezy666 $REMOTE_PATH/.env"
+
+  # Restart PM2
+  echo "[5/5] Restarting PM2..."
+  ssh $SSH_OPTS $user@$host "cd $REMOTE_PATH && pm2 restart yieldswarm && sleep 5 && pm2 list"
+
+  # Health check
+  sleep 3
+  echo ""
+  echo "  Health check:"
+  ssh $SSH_OPTS $user@$host "curl -s --max-time 10 localhost:3000/health 2>/dev/null || echo 'Health endpoint not responding yet'"
+
+  echo ""
+  echo "  ✓ $name deployed successfully!"
+}
+
+# ─── Run deployments ────────────────────────────────────────────────
+
+echo "YieldSwarm Azure VM Deploy — $(date)"
+echo ""
+
+deploy_vm "$VM1_HOST" "$VM1_USER" "$VM1_NAME"
+deploy_vm "$VM2_HOST" "$VM2_USER" "$VM2_NAME"
+
+echo ""
+echo "═══════════════════════════════════════════════════════"
+echo "  ALL DONE — Both VMs Updated"
+echo "═══════════════════════════════════════════════════════"
+echo ""
+echo "NEXT STEPS:"
+echo "  1. Verify VMs: curl https://yieldswarm.polsia.app/health"
+echo "  2. Check PM2: ssh -i ~/azure_key.pem $VM1_USER@$VM1_HOST 'pm2 list'"
+echo "  3. Set remaining env vars on Render dashboard:"
+echo "     - ADMIN_SECRET"
+echo "     - SESSION_SECRET"
+echo "     - DATABASE_URL (Neon)"
+echo "     - All payment keys (Square, Stripe, etc.)"
+echo "  4. Deploy vault contracts:"
+echo "     - npx hardhat run contracts/scripts/deploy-helix-vault.js --network helixL2"
+echo "     - npx hardhat run contracts/scripts/deploy-arb-vault.js --network arbitrum"
+echo "     - Copy addresses → VAULT_CONTRACT_HELIX + VAULT_CONTRACT_ARB"
+echo ""
+echo "CRITICAL VALUES (Christopher must fill manually):"
+echo "  - ADMIN_SECRET      → generate at: https://1password.com/password-generator/"
+echo "  - SESSION_SECRET    → generate at: https://1password.com/password-generator/"
+echo "  - DATABASE_URL       → Neon PostgreSQL connection string"
+echo "  - SQUARE_* keys      → squareup.com developer dashboard"
+echo "  - RESEND_API_KEY     → resend.com account"
+echo "  - AGENTMAIL_API_KEY  → console.agentmail.to"
+echo ""
+echo "GAS REQUIRED for vault contract deployment:"
+echo "  - HELIX L2 deploy: ~0.01 ETH on Arbitrum Sepolia"
+echo "  - Arb mainnet deploy: ~0.05 ETH on Arbitrum One"
+echo ""
+echo "Generated by Engineering Agent Task #2157688 — 2026-06-02"

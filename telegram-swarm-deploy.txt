@@ -1,0 +1,4 @@
+# Swarm Core Telegram Bot — Deployment Artifact
+# Deployed via Polsia Engineering Agent
+# SHA: 93f17f3 (routes/telegram-swarm.js + bots/telegram-swarm.js)
+# Mounted at: /api/telegram-swarm

@@ -1,0 +1,25 @@
+# YieldSwarm API + Frontend Docker image
+# Single stage: node:20-alpine, serves EJS views + static public/ + API on :3000
+# Workers (node-cron) run in-process when POLSIA_IN_PROCESS_CRONS_ENABLED=true
+# All secrets injected at runtime via --env or env_file — never baked in.
+
+FROM node:20-alpine
+
+RUN apk add --no-cache wget
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --production
+
+COPY . .
+
+# Static assets: cache immutable assets (js/css/fonts) 1 year
+# Dynamic views: EJS templates (no cache at build time, render at runtime)
+# Health probe
+HEALTHCHECK --interval=30s --timeout=10s --start-period=45s --retries=3 CMD wget -qO- "http://localhost:${PORT:-3000}/health" || exit 1
+
+EXPOSE 3000
+
+# 460 MB max — matches Render RAM ceiling (PM2 cluster)
+CMD ["node", "--max-old-space-size=460", "server.js"]

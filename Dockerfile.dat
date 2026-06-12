@@ -1,0 +1,29 @@
+# YieldSwarm — production Docker image
+# Base: node:20-alpine (small footprint, LTS)
+# All configuration via env vars at runtime — zero secrets baked in.
+
+FROM node:20-alpine
+
+# Install wget for HEALTHCHECK (alpine has no curl by default)
+RUN apk add --no-cache wget
+
+WORKDIR /app
+
+# Copy package manifests first — Docker layer cache skips npm ci on code-only changes
+COPY package.json package-lock.json ./
+
+# Production deps only — devDeps not needed at runtime
+RUN npm ci --production
+
+# Copy full codebase (see .dockerignore for exclusions)
+COPY . .
+
+# PORT is overridable at runtime via env var; default 3000
+EXPOSE 3000
+
+# Liveness probe — Render + Docker Compose will use this
+HEALTHCHECK --interval=30s --timeout=10s --start-period=45s --retries=3 \
+  CMD wget -qO- "http://localhost:${PORT:-3000}/health" || exit 1
+
+# Honor the same memory cap used on Render (460 MB)
+CMD ["node", "--max-old-space-size=460", "server.js"]

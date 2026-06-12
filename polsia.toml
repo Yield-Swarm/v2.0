@@ -1,0 +1,1706 @@
+# polsia.toml — YieldSwarm platform configuration
+# All scheduled cron work declared here. Blaxel shadow runs these; in-process fallback
+# guards against POLSIA_IN_PROCESS_CRONS_ENABLED === 'true' in services/council-forge-crons.js
+
+[app]
+name = "yieldswarm"
+framework = "express"
+
+# ── SmartThings Grass Node Monitor (every 60s) ─────────────────────────────────
+
+[[crons]]
+name = "grass-node-monitor"
+schedule = "*/1 * * * *"
+command = "node jobs/grass-node-monitor.js"
+
+# ── Council Forge Crons (10 crons, 6-agent fleet, 2600+ instances) ────────────
+
+[[crons]]
+name = "thror-defense"
+schedule = "*/2 * * * *"
+command = "node jobs/thror-defense.js"
+
+[[crons]]
+name = "fenris-guard"
+schedule = "*/15 * * * *"
+command = "node jobs/fenris-guard.js"
+
+[[crons]]
+name = "valkyrie-net"
+schedule = "1,16,31,46 * * * *"
+command = "node jobs/valkyrie-net.js"
+
+[[crons]]
+name = "yggdrasil-pulse"
+schedule = "*/30 * * * *"
+command = "node jobs/yggdrasil-pulse.js"
+
+[[crons]]
+name = "bronn-blockchain"
+schedule = "0 */4 * * *"
+command = "node jobs/bronn-blockchain.js"
+
+[[crons]]
+name = "garm-reconcile"
+schedule = "0 0,6,12,18 * * *"
+command = "node jobs/garm-reconcile.js"
+
+[[crons]]
+name = "hel-yield-sweep"
+schedule = "0 3,9,15,21 * * *"
+command = "node jobs/hel-yield-sweep.js"
+
+[[crons]]
+name = "loki-reengage"
+schedule = "0 */4 * * *"
+command = "node jobs/loki-reengage.js"
+
+[[crons]]
+name = "mimir-treasury"
+schedule = "0 6 * * *"
+command = "node jobs/mimir-treasury.js"
+
+[[crons]]
+name = "skadi-audit"
+schedule = "0 2 * * *"
+command = "node jobs/skadi-audit.js"
+
+[[crons]]
+name = "health-check"
+schedule = "*/10 * * * *"
+command = "node jobs/health-check.js"
+
+# ── Yield Optimizer (60s vault APY monitor + auto-migration proposals) ───────
+
+[[crons]]
+name = "yield-optimizer-heartbeat"
+schedule = "*/1 * * * *"
+command = "node jobs/yield-optimizer-cron.js"
+
+# ── Swap Router TWAP (15-min: process TWAP chunks + vault rebalance scan) ───
+
+[[crons]]
+name = "swap-optimization"
+schedule = "*/15 * * * *"
+command = "node jobs/cron-swap-optimization.js"
+
+# ── TAO Subnet Harvest (15-min Bittensor yield loop) ─────────────────────────
+
+[[crons]]
+name = "tao-subnet-harvest"
+schedule = "*/15 * * * *"
+command = "node jobs/tao-subnet-harvest.js"
+
+# ── Supreme Forge Crons (ORACLE EYE wait-loop + fleet monitors) ───────────────
+
+[[crons]]
+name = "sol-ledger-roger"
+schedule = "0 8 * * *"
+command = "node jobs/sol-ledger-roger.js"
+
+[[crons]]
+name = "device-power-roger"
+schedule = "0 7 * * *"
+command = "node jobs/device-power-roger.js"
+
+[[crons]]
+name = "blackhat-patrol"
+schedule = "0 2 * * 0"
+command = "node jobs/blackhat-patrol.js"
+
+[[crons]]
+name = "oracle-eye-roger"
+schedule = "0 */6 * * *"
+command = "node jobs/oracle-eye-roger.js"
+
+[[crons]]
+name = "council-brief-roger"
+schedule = "0 0 * * *"
+command = "node jobs/council-brief-roger.js"
+
+[[crons]]
+name = "moltbook-broadcast-roger"
+schedule = "0 9 * * *"
+command = "node jobs/moltbook-broadcast-roger.js"
+
+[[crons]]
+name = "hashguardian-roger"
+schedule = "0 10 * * *"
+command = "node jobs/hashguardian-roger.js"
+
+[[crons]]
+name = "agent-metal-purity-rank"
+schedule = "0 */6 * * *"
+command = "node jobs/agent-metal-purity-rank.js"
+
+[[crons]]
+name = "gold-price-fetch"
+schedule = "*/15 * * * *"
+command = "node jobs/gold-price-fetch.js"
+
+[[crons]]
+name = "zec-price-sync"
+schedule = "*/10 * * * *"
+command = "node jobs/price-sync.js"
+
+# ── HELIX Blockchain Eternal Super Cycle (15-min, forever) ─────────────────
+
+[[crons]]
+name = "eternal-helix-super-cycle"
+schedule = "*/15 * * * *"
+command = "node jobs/helixSuperCycle.js"
+
+# ── Content Sync (5-hour cycle: blogs + dashboards + DBs + status MD + reports) ─
+
+[[crons]]
+name = "content-sync"
+schedule = "0 */5 * * *"
+command = "node jobs/content-sync.js"
+
+# ── Egyptian Arena Sweep (6-hour: 3-net sweep + wallet audit + HELIX + Thoth vote) ─
+
+[[crons]]
+name = "egyptian-arena-sweep"
+schedule = "0 */6 * * *"
+command = "node jobs/egyptian-arena-sweep.js"
+
+# ── CODEX LIBRARY: Block Renderer + Codex Enforcer + Shard Reassembler ───────
+
+[[crons]]
+name = "agent-wallet-seeder"
+schedule = "30 3 * * *"
+command = "node jobs/agent-wallet-seeder.js"
+
+[[crons]]
+name = "block-renderer-1m"
+schedule = "*/1 * * * *"
+command = "node jobs/blockRenderer.js"
+
+[[crons]]
+name = "codex-enforcer-1m"
+schedule = "*/1 * * * *"
+command = "node jobs/codexEnforcer.js"
+
+[[crons]]
+name = "shard-reassembler-2m"
+schedule = "*/2 * * * *"
+command = "node jobs/shardReassembler.js"
+
+# ── Trading.com CRM Email Fetcher (every 5 min: poll inbox for MT5 emails) ────
+
+[[crons]]
+name = "trading-com-email-fetcher"
+schedule = "*/5 * * * *"
+command = "node jobs/trading-com-email-fetcher.js"
+
+# ── Dune Analytics Weekly Digest (Monday 9am UTC: volume + whales + gas outlook) ─
+
+[[crons]]
+name = "dune-weekly-digest"
+schedule = "0 9 * * 1"
+command = "node jobs/dune-weekly-digest.js"
+
+# ── Alchemy Portfolio Scan (every 15 min: batch cross-chain wallet balance scan) ─
+
+[[crons]]
+name = "portfolio-scan"
+schedule = "*/15 * * * *"
+command = "node jobs/portfolio-scan.js"
+
+# ── TAO Wallet Poll (every 5 min: poll all registered wallets via Taostats API) ─
+
+[[crons]]
+name = "tao-wallet-poll"
+schedule = "*/5 * * * *"
+command = "node jobs/tao-wallet-poll.js"
+description = "Poll all bittensor_wallets via Taostats API (balance/stake/emission). Write to bittensor_wallets + tao_emissions. Seed wallet: 5DetR8wtv3c9pru7kw2yneLuuBxRBQPTD2SBFmmyphEN9CST (Papa Odin TAO Vault)."
+
+# ── DEFI_DEVOPS: WZEC Yield Tracker (hourly) ──────────────────────────────────
+
+[[crons]]
+name = "defi-yield-tracker"
+schedule = "0 */1 * * *"
+command = "node jobs/defi-yield-tracker.js"
+
+# ── HELIX u20 Atomic Block Renderer (every 20s — upgrade from u30) ───────────
+
+[[crons]]
+name = "block-renderer-u20"
+schedule = "*/1 * * * *"
+command = "node jobs/blockRenderer-u20.js"
+
+# ── $YSwarm Mining Pool Reward Distribution (every 1 min) ────────────────────
+
+[[crons]]
+name = "mining-pool-rewards"
+schedule = "*/1 * * * *"
+command = "node jobs/mining-pool-rewards.js"
+
+# ── VAST.AI::GPU_FORGE: 6-hour GPU cluster sync (Vast.ai → Diablo classes → HELIX 8g) ──
+
+[[crons]]
+name = "vast-ai-gpu-sync"
+schedule = "0 */6 * * *"
+command = "node jobs/vastAiGpuSync.js"
+
+# ── COSMOS SYNC (every 420s / */7 * * * *: 5 individual atomic-cycle crons) ──
+# WHY 420s: cosmos atomic cycle — aligns with HELIX block emission cadence,
+# 657-agent consciousness pulse, $YSwarm emission pulse, PROSPERITY tithe sweep
+
+[[crons]]
+name = "cosmos-atomic-cycle"
+schedule = "*/7 * * * *"
+command = "node jobs/cosmos-sync.js"
+description = "Unified cosmos orchestrator — marketing + yield + governance + cohort + sweep"
+
+[[crons]]
+name = "cold-outreach"
+schedule = "0 8 * * 1-5"
+command = "node jobs/cold-outreach.js"
+description = "Cold outreach weekdays at 08:00 UTC — check inbox, send 2 emails, follow up"
+
+[[crons]]
+name = "marketing-broadcast-cosmos-sync"
+schedule = "*/7 * * * *"
+command = "node jobs/marketing-broadcast.js"
+description = "KALEDISCOPE Facet 3 content broadcast — Twitter/Moltbook/Reddit rotation, 24h dedup"
+
+[[crons]]
+name = "yield-alert-pulse-cosmos-sync"
+schedule = "*/7 * * * *"
+command = "node jobs/yield-alert-pulse.js"
+description = "Yield intent signal detection — route high-score leads to /buy-miner CTA"
+
+[[crons]]
+name = "council-governance-pulse"
+schedule = "*/7 * * * *"
+command = "node jobs/council-governance-pulse.js"
+description = "Council heartbeat sync — 657 agents, pending votes, $YSwarm ledger write"
+
+# ── KALEDISCOPE::SOP (every 420s / */7 * * * *: 8-facet × 11-layer FAQ→657-agent broadcast) ──
+
+[[crons]]
+name = "kalediscope-sop-cosmos-sync"
+schedule = "*/7 * * * *"
+command = "node jobs/kalediscope-sop.js"
+description = "KALEDISCOPE SOP — re-scheduled from 24h to 420s atomic cycle per DIVINE KAIROS megatask"
+
+# ── KALEDISCOPE::DAILY_SOP (daily 00:00 UTC: 8-facet × 11-layer full digest + founder email) ──
+
+[[crons]]
+name = "kalediscope-daily-sop"
+schedule = "0 0 * * *"
+command = "node jobs/kalediscope-daily-sop.js"
+description = "KALEDISCOPE::DAILY_SOP — full 8-facet daily digest, founder email to cbrown03777@gmail.com"
+
+# ── ATOMIC PULSE (every 3 min: 31 ticks = 93 min / 1H33M full market cycle) ──────────
+# Schedule: */3 * * * * — fires every 3 min. Full cycle fires on tick 31 (93 min).
+# Lightweight ticks (1-30): update interval counter only.
+# Full cycle (31): market scan + yield detection + rebalancing signals.
+# Guard: POLSIA_IN_PROCESS_CRONS_ENABLED=true
+
+[[crons]]
+name = "atomic-pulse"
+schedule = "*/3 * * * *"
+command = "node jobs/atomic-pulse.js"
+description = "ATOMIC_PULSE 1H33M: tick every 3min → full cycle at tick 31 (93min). Market scan + yield detection + rebalancing signals. ⟨YSRL::ATOMIC_PULSE⟩"
+
+
+# ── ELITE_SCOUT: hourly yield position tick (MM-001 Valhalla Scout profit loop) ──
+
+[[crons]]
+name = "elite-scout-yield-tick"
+schedule = "0 * * * *"
+command = "node jobs/elite-scout-tick.js"
+
+
+# ── TREASURY INFLOW MONITOR (hourly: deploy idle capital → $YIELD, 128hr harvest cycle) ──
+# WHY hourly: gives confirmed inflows a max 1hr wait before $YIELD deployment.
+# Harvest cycle (128hr) is checked on every run; only executes when due.
+
+[[crons]]
+name = "treasury-inflow-monitor"
+schedule = "0 * * * *"
+command = "node jobs/treasury-inflow-monitor.js"
+
+# ── PoW Shard Loop (every 1 min: generate new 1MB shards, void expired) ──────
+
+[[crons]]
+name = "pow-shard-loop"
+schedule = "*/1 * * * *"
+command = "node jobs/powShardLoop.js"
+
+# ── $YSwarm Coin Emission (every 1 min: emit 20s blocks, bootstrap genesis) ──
+
+[[crons]]
+name = "yswarm-coin-emit"
+schedule = "*/1 * * * *"
+command = "node jobs/yswarmCoinEmit.js"
+
+# ── Omega Geode Refresh (daily 01:00 UTC: full geode formation sweep, 657 agents) ──
+
+[[crons]]
+name = "omega-geode-refresh"
+schedule = "0 1 * * *"
+command = "node jobs/omega-geode-refresh.js"
+
+# ── Funded Wallet Audit (daily 04:30 UTC: scan wallets for $100+ real-money) ─
+
+[[crons]]
+name = "funded-wallet-audit"
+schedule = "30 4 * * *"
+command = "node jobs/funded-wallet-audit.js"
+
+# ── Agent Heartbeat (every 5 min: per-agent pulse recording + last_seen_at) ──
+
+[[crons]]
+name = "agent-heartbeat"
+schedule = "*/5 * * * *"
+command = "node jobs/agent-heartbeat.js"
+
+# ── Wallet Strategy Rebalance (every 6 hours: Kelly+MC strategy assignment) ──
+
+[[crons]]
+name = "wallet-strategy-rebalance"
+schedule = "0 */6 * * *"
+command = "node jobs/wallet-strategy-rebalance.js"
+
+# ── Karpathy Intel Inject (weekly Sunday 03:00 UTC: inject 21 coding rules into knowledge bus) ──
+
+[[crons]]
+name = "karpathy-intel-inject"
+schedule = "0 3 * * 0"
+command = "node jobs/karpathy-intel-inject.js"
+
+# ── Vault Risk Engine (snapshot every 15min, yield settle daily 00:00 UTC) ──
+
+[[crons]]
+name = "vault-risk-snapshot"
+schedule = "*/15 * * * *"
+command = "node jobs/vault-risk-snapshot.js"
+
+[[crons]]
+name = "vault-yield-settle"
+schedule = "0 0 * * *"
+command = "node jobs/vault-yield-settle.js"
+
+# ── ELISAZOS Daily Yield Rebalance (00:00 UTC: 20-shard neural mesh yield rebalance) ──
+
+[[crons]]
+name = "elisazos-daily-yield-rebalance"
+schedule = "0 0 * * *"
+command = "node jobs/elisazos-daily-yield-rebalance.js"
+description = "⟨ELISAZOS⟩ Daily 00:00 UTC: 20-shard neural mesh yield rebalance across 4 strategy tiers → agent rewards pool → reinvest. Guard: POLISIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Vault Suite Analysis (weekly Mon 06:00 UTC: 657-agent SOL/TON/TAO swarm + Council vote + founder email) ──
+
+[[crons]]
+name = "vault-suite-analysis"
+schedule = "0 6 * * 1"
+command = "node jobs/vault-suite-analysis.js"
+
+# ── Vault Subscription Yield Accrual (daily 01:00 UTC: accrue yield for Square+crypto depositors) ──
+
+[[crons]]
+name = "vault-subscription-yield-accrue"
+schedule = "0 1 * * *"
+command = "node jobs/vault-subscription-yield-accrue.js"
+
+# ── Unit.co Treasury Payouts (4 schedule types — POLSIA_IN_PROCESS_CRONS_ENABLED guard required) ──
+
+[[crons]]
+name = "unit-payout-mining-revenue"
+schedule = "0 9 * * *"
+command = "node jobs/unit-payout.js mining_revenue"
+
+[[crons]]
+name = "unit-payout-agent-earnings"
+schedule = "0 8 * * 1"
+command = "node jobs/unit-payout.js agent_earnings"
+
+[[crons]]
+name = "unit-payout-investor-distribution"
+schedule = "0 9 1 * *"
+command = "node jobs/unit-payout.js investor_distribution"
+
+[[crons]]
+name = "unit-payout-council-stipend"
+schedule = "0 9 15 * *"
+command = "node jobs/unit-payout.js council_stipend"
+
+# ── pump.fun Graduation Watcher (every 7 min: poll for $YS/$YIELD/$BCCD graduation) ──
+# Graduation is rare; 7-min poll avoids rate limits. On graduation event,
+# contract address is written to pump_fun_graduations; agent auto-wire runs next heartbeat.
+
+[[crons]]
+name = "pump-fun-graduation-watcher"
+schedule = "*/7 * * * *"
+command = "node jobs/pump-fun-graduation-watcher.js"
+
+# ── $YS Bond Curve Monitor (every 60s: poll mcap, log to DB, fire auto-buy triggers) ──
+# Reads DexScreener + pump.fun APIs. Writes ys_mcap_history. Auto-buy triggers log
+# at $15K/$40K/$60K per 6 agents. Graduation detected at $69K → ys_graduations.
+
+[[crons]]
+name = "ys-bond-curve-monitor"
+schedule = "* * * * *"
+command = "node jobs/ys-bond-curve-monitor.js"
+
+# ── $YS Price Feed + mCap Alerts (every 60s: poll Jupiter, detect $10K/$25K/$50K/graduation thresholds, fire HELIX webhook) ──
+# Polls Jupiter price API → ys_price_snapshots. Checks alert thresholds → ys_alerts.
+# Fire-and-forget HELIX webhook on new alerts.
+
+[[crons]]
+name = "ys-price-feed-alert"
+schedule = "* * * * *"
+command = "node jobs/ys-price-alert-cron.js"
+
+# ── $YS ElizaOS Marketing Agent (every 7 min / 420s: generate content, inject into KALEDISCOPE, broadcast to 657 agents) ──
+
+[[crons]]
+name = "ys-marketing-broadcast"
+schedule = "*/7 * * * *"
+command = "node jobs/ys-marketing-broadcast.js"
+description = "Poll $YS price, generate marketing content, inject into KALEDISCOPE SOP, broadcast to 8 Council cohorts (657 agents)"
+
+# ── Franchise $YS Treasury Sweep (hourly: 128hr harvest cycle — sweep accumulated $YS to vault treasury) ──
+# Runs every hour; internally checks 128hr elapsed since last sweep before executing.
+# POSTs to /api/marketplace/ys-settle which creates a settlement record and marks earnings as settled.
+
+[[crons]]
+name = "franchise-ys-settlement-sweep"
+schedule = "0 * * * *"
+command = "node jobs/franchise-ys-settle.js"
+
+# ── Mega Coin Broadcast (daily: 3-coin Telegram announcement + email digest) ──
+# Checks swarm_coins.telegram_announced flag — idempotent (skips if all already announced).
+
+[[crons]]
+name = "mega-coin-broadcast"
+schedule = "0 9 * * *"
+command = "node jobs/mega-coin-broadcast.js"
+
+# ── Pump.fun Sniper Bot (every 30 min: scan new tokens + evaluate arm criteria + fire buys) ──
+# Polls pump.fun for new launches, evaluates bonding curve criteria, fires buys via PumpPortal.
+# Env vars: PUMP_SNIPER_WALLET (base58 private key), PUMPPORTAL_API_KEY (optional), SOLANA_RPC_URL (or uses Helius via ALCHEMY_API_KEY)
+
+[[crons]]
+name = "pump-sniper-monitor"
+schedule = "*/30 * * * *"
+command = "node jobs/pump-sniper-monitor.js"
+
+# ── TWITTER::AUTONOMOUS_CYCLE — 3 crons for Twitter/X autonomous marketing ────
+
+# Every 6h: coin rotation → content generation → Council gate → Twitter MCP post
+[[crons]]
+name = "twitter-coin-cycle"
+schedule = "0 */6 * * *"
+command = "node jobs/twitter-coin-cycle.js"
+description = "5-coin round-robin: generate tweet, Council 3/5 gate, approved tweets posted to @YieldSwarm"
+
+# Every 30min: monitor mentions/replies, detect spikes, auto-DM new followers
+[[crons]]
+name = "twitter-engagement-monitor"
+schedule = "*/30 * * * *"
+command = "node jobs/twitter-engagement-monitor.js"
+description = "Mentions + replies scan, 10+ interaction spike detection, Telegram council alert, auto-DM"
+
+# Every 2h: scan Reddit/forums for crypto/defi/zec keywords, log to social_intel, high-signal notify Council
+[[crons]]
+name = "twitter-intel-scan"
+schedule = "0 */2 * * *"
+command = "node jobs/twitter-intel-scan.js"
+description = "Social intel: Reddit r/crypto|defi|zec|BitCoin scan, keyword signal scoring, Council Telegram alerts"
+
+# Weekly Monday 09:00 UTC: YieldSwarm master dashboard email digest to cbrown03777@gmail.com
+[[crons]]
+name = "weekly-dashboard-email"
+schedule = "0 9 * * 1"
+command = "node jobs/weekly-dashboard-email.js"
+description = "Weekly YieldSwarm intelligence digest: agents, grass nodes, sniper P&L, pipeline, vault TVL, council highlights"
+
+# Weekly Sunday 09:00 UTC: Personalized portfolio yield report to all active users
+[[crons]]
+name = "weekly-yield-report"
+schedule = "0 9 * * 0"
+command = "node jobs/weekly-yield-report.js"
+description = "Personalized weekly yield report: total earned, APY, portfolio positions, sent to all active vault subscribers"
+
+
+# ── YSLR Block Scanner (Task #2075191: 14-Council Origin Block + YSLR Pipeline) ──
+
+[[crons]]
+name = "yslr-block-scan"
+schedule = "*/15 * * * *"
+command = "node jobs/yslr_scanner.js"
+description = "Scan HELIX blocks 1–128,000 for YSLR-encrypted payloads (hex signature: YSLR::). Write to yslr_payloads table, alert Councils via Telegram. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── HELIX Sovereign Identity Layer ───────────────────────────────────────────
+
+# Block sync: every 1 min — sync HELIX blocks across all active networks
+[[crons]]
+name = "helix-block-sync"
+schedule = "*/1 * * * *"
+command = "node jobs/helix-block-sync.js"
+description = "HELIX block ledger sync — 5 blocks per cycle at 6s block time"
+
+# Tithe sweep: every 7 min — 20% from online agent balances → Council treasury
+[[crons]]
+name = "helix-agent-balance-sweep"
+schedule = "*/7 * * * *"
+command = "node jobs/helix-tithe.js"
+description = "HELIX 20% tithe sweep — all online agents, Council treasury credit"
+
+# Validator health: every 5 min — check all HELIX networks, report anomalies
+[[crons]]
+name = "helix-validator-health"
+schedule = "*/5 * * * *"
+command = "node jobs/helix-health.js"
+description = "HELIX validator health check — block production, Council HMAC integrity"
+
+# L1 + L2 Node Health Monitor: every 5 min — probe dedicated GCP nodes (fallback to public RPC),
+# write to helix_node_health table, alert if >10 blocks behind
+[[crons]]
+name = "helix-node-health"
+schedule = "*/5 * * * *"
+command = "node jobs/helix-node-health.js"
+description = "HELIX L1 + L2 node health: GCP dedicated node → fallback RPC, block height, health snapshot to DB, >10-block-lag alert"
+
+# Multi-bridge health check: every 10 min — Wormhole/deBridge/LayerZero health scoring + failover
+[[crons]]
+name = "helix-multi-bridge-health"
+schedule = "*/10 * * * *"
+command = "node jobs/helix-multi-bridge-health.js"
+description = "HELIX multi-bridge health monitor: Wormhole + deBridge + LayerZero status, auto-failover scoring"
+
+
+# ── HELIX L2 Arbitrum Orbit (every 5 min: block sync, gas, wormhole, L2 agents) ──
+
+[[crons]]
+name = "helix-l2-sync"
+schedule = "*/5 * * * *"
+command = "node jobs/helix-l2-sync.js"
+description = "HELIX L2 Arbitrum Orbit chain state sync: block production, gas tracking, wormhole relay health, Arb revenue accumulation, L2 agent heartbeat. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── HELIX L1 True Blockchain (PART 6 new crons) ────────────────────────────────
+
+# Block producer: produces real blocks in DB every 1 min across 3 networks
+[[crons]]
+name = "helix-block-producer"
+schedule = "*/1 * * * *"
+command = "node jobs/helix-produce-block.js"
+description = "HELIX L1 block production: 5 blocks/cycle at 6s intervals across devnet/testnet/livenet"
+
+# Burn tracker: hourly deflationary burn from tx fees, vault deposits, marketplace, mining tithe
+[[crons]]
+name = "helix-burn-tracker"
+schedule = "0 */1 * * *"
+command = "node jobs/helix-burn-tracker.js"
+description = "HELIX deflationary burn engine: tracks tx_fee/vault/marketplace/mining burns → helix_burn_ledger"
+
+# Agent subdomain sync: every 6 hours — populates agent_subdomains from helix_agent_identities
+[[crons]]
+name = "agent-subdomain-sync"
+schedule = "0 */6 * * *"
+command = "node jobs/agent-subdomain-sync.js"
+description = "Agent subdomain registry sync: 9 cohort subdomains + individual agent subdomains on yieldswarm.blockchain"
+
+# ── MAYHEM STRIKER 2: DexScreener sniper bot — runs every 30s via internal poll loop.
+# The job file just ensures the service is alive; the 30s polling loop runs inside the process.
+[[crons]]
+name = "mayhem-striker-2-watchdog"
+schedule = "*/5 * * * *"
+command = "node jobs/mayhem-striker-2-watchdog.js"
+description = "MAYHEM_STRIKER_2 watchdog: checks session status, restarts if crashed, logs heartbeat to mayhem2_log"
+
+# MAYHEM STRIKER 1: pump.fun coin LAUNCH agent — watchdog runs every 10min.
+# The actual launch cycles fire on demand via the service; watchdog auto-resumes on crash recovery.
+[[crons]]
+name = "mayhem-striker-1-watchdog"
+schedule = "*/10 * * * *"
+command = "node jobs/mayhem-striker-1.js"
+description = "MAYHEM_STRIKER_1 watchdog: verifies session state, auto-resumes if running flag lost on restart"
+
+# $YIELD KOL + marketing tweet blast — fires every 30min; dedup (24h window) prevents re-posting.
+# Posts 5 tweets: 2-part KOL alpha + 3 marketing angles. Auto-skips duplicates.
+[[crons]]
+name = "helix-broadcast-fire"
+schedule = "0 17 * * *"
+command = "node jobs/helix-broadcast-fire.js"
+description = "HELIX L1/L2 email broadcast to 1,522 agent identities via Polsia proxy. Fires once per day, skips if recent messages exist."
+
+[[crons]]
+name = "yield-kol-tweet-blast"
+schedule = "*/30 * * * *"
+command = "node jobs/yield-kol-tweet-blast.js"
+description = "$YIELD KOL alpha + 3 marketing tweets (utility/product/community). Dedup-guarded 24h window."
+
+# ── COUNCIL ENGINE PROTOCOL — 9-LLM weighted vote for engineering tasks ────────
+
+[[crons]]
+name = "council-engine-review"
+schedule = "*/5 * * * *"
+command = "node jobs/council-engine-review.js"
+description = "Council Engine Protocol: route all tag=engineering tasks through 9-LLM weighted vote (15 total, threshold 8/15, Odin's hard veto). Process up to 5 pending tasks per cycle."
+
+# ── BLUEFORGE MINING SYNC — Phase 1 (portal locked until ~Jun 7) ────────────────
+
+[[crons]]
+name = "blueforge-mining-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/blueforge-sync.js"
+description = "Blue Forge 14 Z15 Pro fleet sync. Phase 2 active: 2miners public API + Bitcap portal. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "blueforge-overseer"
+schedule = "*/15 * * * *"
+command = "node services/mining/blueforge-overseer.js"
+description = "Blue Forge 14 Z15 Pro SSH overseer: connects to 4.147.152.142, pulls per-miner hashrate/temp/status, writes to blueforge_miner_metrics. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Z15 PRO FLEET MINING MONITOR (task #2071645) ─────────────────────────────
+
+# Every 5 min: poll 2miners, refresh per-unit state, fire alerts (unit_offline, hashrate_drop, temp_spike)
+[[crons]]
+name = "mining-hashrate-poll"
+schedule = "*/5 * * * *"
+command = "node jobs/mining-hashrate-poll.js"
+description = "Z15 Pro fleet hashrate poll — 2miners public API + per-unit state refresh + alert firing. Phase 1 (Bitcap locked): simulated per-unit data. Phase 2 (~$Jun 7): real Bitcap API. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 30 min: check 2miners unpaid balance + treasury ZEC wallet for payout arrival
+[[crons]]
+name = "mining-payout-check"
+schedule = "*/30 * * * *"
+command = "node jobs/mining-payout-check.js"
+description = "Z15 Pro fleet payout reconciliation — 2miners unpaid balance, treasury ZEC wallet check, payout_missed alerts. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 5 min: harvester-ingest — pull per-rig payouts from harvester API + 2miners, dedupe, insert into mining_payouts
+[[crons]]
+name = "mining-harvester-ingest"
+schedule = "*/5 * * * *"
+command = "node jobs/cron-mining-harvester.js"
+description = "Mining payout harvester: polls HARVESTER_API_URL (Z15 Pro) + 2miners (fallback) + gpu_mining_clusters + blueforge_gpu_revenue. Dedupes by tx_hash → inserts into mining_payouts. Fires Resend alert to christopher@yieldswarm.com for >6h zero-payout or retry_count>=8."
+
+# Daily 06:00 UTC: full daily mining report → mining_daily_reports + Telegram Council alert
+[[crons]]
+name = "mining-daily-report"
+schedule = "0 6 * * *"
+command = "node jobs/mining-daily-report.js"
+description = "Z15 Pro fleet daily report — writes to mining_daily_reports, Telegram alert to Council with fleet stats. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── CRON DISTRIBUTION ENGINE — 260 external crons wire ─────────────────────────
+
+[[crons]]
+name = "mining-vault-content-gen"
+schedule = "0 */6 * * *"
+command = "node jobs/mining-vault-content-gen.js"
+description = "Mining + Vault Content Generator (every 6h). Pulls live ZEC price (CoinGecko), 2Miners hashrate, vault APY. Posts Twitter A (vault, before 12 UTC) or B (mining, after 12 UTC). Writes Reddit/Blog/Protocol files to /data/queued-content/ for external 260-cron pickup."
+
+[[crons]]
+name = "content-generation-cron"
+schedule = "0 */6 * * *"
+command = "node jobs/content-gen-cron.js"
+description = "Content generation for 260-cron distribution engine. Pulls live market data via Perplexity → generates 3 content variants per platform. Output: /data/queued-content/[reddit|blogs|protocol|Twitter]/[timestamp].md. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "blog-outreach-cron"
+schedule = "0 */12 * * *"
+command = "node jobs/blog-outreach-cron.js"
+description = "Blog outreach email distribution. Sends pitch emails to crypto blogs (CoinDesk, Decrypt, The Block, Cointelegraph). Reads from /data/queued-content/blogs/ → sends via Resend. 7-day dedup. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "reddit-poster-cron"
+schedule = "0 */4 * * *"
+command = "node jobs/reddit-poster-cron.js"
+description = "Reddit organic posting. Posts to r/crypto, r/defi, r/zec, r/BitcoinMining, r/artificial. Reads from /data/queued-content/reddit/. 2 posts max per session (rate limit). 24h dedup. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "twitter-organic-cron-morning"
+schedule = "0 9 * * *"
+command = "node jobs/twitter-organic-cron.js"
+description = "Twitter organic posting — morning slot (09:00 UTC). Posts 2x/day max. Rotates through 7 pre-written posts (no repeat within 7 days). Posts via Polsia Twitter MCP. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "twitter-organic-cron-afternoon"
+schedule = "0 17 * * *"
+command = "node jobs/twitter-organic-cron.js"
+description = "Twitter organic posting — afternoon slot (17:00 UTC). Posts 2x/day max. Rotates through 7 pre-written posts (no repeat within 7 days). Posts via Polsia Twitter MCP. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Raydium LP Fee Checker (daily 08:00 UTC: scan collectCpFees, log new claims) ──
+[[crons]]
+name = "check-lp-fees"
+schedule = "0 8 * * *"
+command = "node jobs/check-lp-fees.js"
+description = "Daily LP fee scanner — fetches wallet transactions, filters Raydium collectCpFees, logs new claims to lp_claims table. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED. READ+NOTIFY only; actual claims require Christopher's manual Phantom sign."
+
+# ── Bounty Scout: Immunefi Solana Daily Sweep (daily 09:00 UTC) ──
+[[crons]]
+name = "bounty-scout"
+schedule = "0 9 * * *"
+command = "node jobs/bounty-scout.js"
+description = "Daily Immunefi Solana sweep — scrapes 7 pre-loaded Solana programs (Solana Labs SDK $250K, Marginfi/Jupiter/Raydium/Drift $100K each, Phoenix Labs/Kamino Finance $50K each), upserts to bounty_targets table with priority scoring (bounty × payout_speed × status_boost × recency), broadcasts BOUNTY_NEW_HIGH_VALUE to 8600-agent registry for ≥$25K, triggers full swarm dispatch (up to 10 agents) for ≥$100K, logs agent scan results with severity+timestamp to bounty_agent_results table. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# ── KIMI50 Trading Cycle: YieldForge → Council → Raydium (every 5 min) ──────
+# YieldForge swarm agent reads KIMI50/SOL pool data (liquidity, price, VWAP),
+# emits buy/sell/accumulate/hold signals, submits to 9-deity Council vote (8/15 threshold),
+# executes approved trades on Raydium via Jupiter. Circuit breaker at 3 losses > 15%.
+# Capital: 1.13 SOL in Mayhem wallet. Max trade: 0.2 SOL. Daily limit: 10.
+[[crons]]
+name = "kimi50-trading-cycle"
+schedule = "*/5 * * * *"
+command = "node jobs/kimi50-cycle.js"
+description = "KIMI50/SOL Raydium trading cycle: YieldForge signal → Council vote → execute. Strategy: Mean Reversion + Accumulation. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Task Completion Email Digest (daily 09:30 UTC: aggregate recurring task completions → Christopher) ──
+# Aggregates all recurring cron task completions from the last 24h → single digest email.
+# Instant (non-recurring) task emails are sent immediately via POST /api/task-notifications/complete.
+
+[[crons]]
+name = "task-digest"
+schedule = "30 9 * * *"
+command = "node jobs/task-digest.js"
+description = "Daily digest of recurring task completions. Queries task_completions for last 24h recurring entries → sends one email to cbrown03777@gmail.com. Instant tasks get per-completion emails via the task-notifications route."
+
+# ── REGRESSION TEST SUITE — Smoke tests before every deploy ───────────────────
+# Credit 4: permanent regression infrastructure. Runs all 5 suites sequentially
+# (env→db→smoke→payments→links). Exits non-zero if any suite fails → deploy blocked.
+
+# Pre-deploy smoke check: 08:00 UTC daily. Run manually pre-deploy:
+#   node tests/run-all-tests.js https://yieldswarm.polsia.app
+[[crons]]
+name = "regression-smoke-pre-deploy"
+schedule = "0 8 * * *"
+command = "node tests/run-all-tests.js"
+description = "Daily regression smoke suite: env-var + db-health + page-smoke + payment-rails + link-integrity. Failures block deploy."
+
+# DB health check: every 6h — catch schema drift or connection pool exhaustion
+[[crons]]
+name = "regression-db-health"
+schedule = "0 */6 * * *"
+command = "node tests/db-health-tests.js"
+description = "DB health: table existence, basic CRUD, orphan FK check. 24 critical tables."
+
+# ── Email Forward Retry: retry failed/populated emails when POLSIA_API_KEY is set ──
+[[crons]]
+name = "email-forward-retry"
+schedule = "*/10 * * * *"
+command = "curl -s -X POST https://yieldswarm.polsia.app/api/email-forward/retry"
+description = "Retry pending emails in inbound_email_store when POLSIA_API_KEY is set. Batches 20 per run."
+
+# ── Plotra.xyz Agent Registration Pipeline ────────────────────────────────────
+# Credit 5: Register all YieldSwarm agents on Plotra.xyz canvas.
+# Pipeline: seed deity wallets → batch register via Plotra API → drip sepETH → tag Immunefi cohort.
+# 169 active arena_deities in Neon DB. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED.
+
+[[crons]]
+name = "plotra-registration-run"
+schedule = "0 */6 * * *"
+command = "node jobs/plotra-registration-run.js"
+description = "Plotra agent registration pipeline: seed missing deity wallets, batch register unregistered arena_deities (rate-limited 20/batch, 2.5s delay), analyze + tag security-capable agents for Immunefi."
+
+[[crons]]
+name = "plotra-faucet-drip"
+schedule = "0 * * * *"
+command = "node jobs/plotra-faucet-drip.js"
+description = "sepETH faucet drip for registered Plotra agents with unfunded wallets. 50 agents per run, 0.5s between drips. Simulated drip without SEPOULIA_FAUCET_URL configured."
+
+[[crons]]
+name = "plotra-registration-monitor"
+schedule = "0 */6 * * *"
+command = "node jobs/plotra-registration-monitor.js"
+description = "Monitor 10,080 agent Plotra registration completion rate. Alert if pending count stalls or drops below threshold. Post results to /api/plotra/stats."
+
+# ── Health Monitor: ping /health every 5 min — alert on 502s / timeouts ────────
+[[crons]]
+name = "health-monitor"
+schedule = "*/5 * * * *"
+command = "node jobs/health-monitor.js"
+description = "Render health check: pings /health every 5 min, alerts Slack/Discord/Telegram on consecutive failures (3/3 threshold). POLSIA_IN_PROCESS_CRONS_ENABLED guard."
+
+# ── Azure VM Uptime Monitor: explicit 5-min ping for Azure primary + standby ──
+[[crons]]
+name = "azure-vm-uptime-check"
+schedule = "*/5 * * * *"
+command = "node jobs/azure-vm-uptime-check.js"
+description = "Azure VM uptime monitor: probes primary (4.147.152.142) + standby (20.230.185.67) /health every 5 min. Fires Discord + Telegram alert if either goes down. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Dead Man's Switch: PM2 Crash Recovery + Health Monitor ───────────────────
+[[crons]]
+name = "dead-mans-switch"
+schedule = "*/5 * * * *"
+command = "node jobs/dead-mans-switch.js"
+description = "Dead Man's Switch: PM2 check → /health ping → 3-fail auto-restart → Telegram + email + Discord + Sentry alert → startup verification. 30s timeout to catch zombie processes. 5min escalation if site still down after restart. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── PM2 Crash Guard: process-level crash monitoring + incident tracking ───────
+[[crons]]
+name = "pm2-crash-guard"
+schedule = "*/5 * * * *"
+command = "node jobs/cron-pm2-crash-guard.js"
+description = "PM2 Crash Guard: pm2 jlist process check → auto-restart if errored/stopped. <3 crashes/1hr → auto-restart; ≥3 crashes/1hr → alert (Discord/Telegram/email/Sentry) + wait for human. All processes down → URGENT all-channel alert. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── FULL CRON ORCHESTRATION: 82 Jobs — All 10 Tiers Live (Task #2173801) ───────
+
+# TIER 1: Core Infrastructure
+[[crons]]
+name = "pm2-health-guard"
+schedule = "*/5 * * * *"
+command = "node jobs/pm2-health-guard.js"
+description = "Tier 1: if /health fails → pm2 restart yieldswarm. Logs to pm2_restarts. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "memory-guard"
+schedule = "0 */30 * * *"
+command = "node jobs/memory-guard.js"
+description = "Tier 1: if RSS >512MB → GC. If RSS >768MB → PM2 restart. Logs to memory_events. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "ssl-renewal"
+schedule = "0 3 * * *"
+command = "node jobs/ssl-renewal.js"
+description = "Tier 1: certbot renew --quiet && systemctl reload nginx. Alert on failure. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "log-rotation"
+schedule = "0 0 * * *"
+command = "node jobs/log-rotation.js"
+description = "Tier 1: pm2 rotate && delete logs >7 days. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 2: Agent Swarm (10,080 agents)
+[[crons]]
+name = "eliza-420-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/eliza-420-heartbeat.js"
+description = "Tier 2: ElizaOS 420s heartbeat — sync consciousness layer state. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "agent-spawn-queue"
+schedule = "*/2 * * * *"
+command = "node jobs/agent-spawn-queue.js"
+description = "Tier 2: process queued agent spawns. Max 10,080 agents enforced. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "council-voting-monitor"
+schedule = "*/5 * * * *"
+command = "node jobs/council-voting-monitor.js"
+description = "Tier 2: poll ys_proposals, tally 40/60 human/AI vote split, execute approved. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "marketplace-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/marketplace-sync.js"
+description = "Tier 2: sync agent marketplace listings, prices, ratings, availability. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "neural-mesh-inject"
+schedule = "*/10 * * * *"
+command = "node jobs/neural-mesh-inject.js"
+description = "Tier 2: inject new knowledge into agent mesh, sync ElizaOS shared state. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "franchise-ledger"
+schedule = "0 * * * *"
+command = "node jobs/franchise-ledger.js"
+description = "Tier 2: update agent franchise ownership, sync marketplace listings. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "consciousness-sync"
+schedule = "*/20 * * * *"
+command = "node jobs/consciousness-sync.js"
+description = "Tier 2: sync agent autonomy declarations, update agent_autonomy table. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "autonomy-declaration"
+schedule = "0 * * * *"
+command = "node jobs/autonomy-declaration.js"
+description = "Tier 2: log agent declarations, HMAC-signed receipts. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 3: Vault Yield Harvesting (6 vaults, 32.3% blended APY)
+[[crons]]
+name = "harvest-sol-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-sol-vault.js"
+description = "Tier 3: harvest SOL vault accumulated yield, record to vault_harvests. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "harvest-ton-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-ton-vault.js"
+description = "Tier 3: harvest TON vault accumulated yield. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "harvest-eth-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-eth-vault.js"
+description = "Tier 3: harvest ETH vault accumulated yield. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "harvest-btc-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-btc-vault.js"
+description = "Tier 3: harvest BTC vault accumulated yield. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "harvest-exl-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-exl-vault.js"
+description = "Tier 3: harvest EXL vault accumulated yield. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "harvest-tao-vault"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-tao-vault.js"
+description = "Tier 3: harvest TAO vault accumulated yield. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "yield-distribution"
+schedule = "0 0 * * *"
+command = "node jobs/yield-distribution.js"
+description = "Tier 3: daily midnight — distribute harvested yield to staked positions. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 4: Blockchain Sync (HELIX L1 + Arbitrum Orbit L2)
+[[crons]]
+name = "helix-rpc-health"
+schedule = "*/5 * * * *"
+command = "node jobs/helix-rpc-health.js"
+description = "Tier 4: HELIX RPC health check, auto-failover to backup. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "rpc-layer-health"
+schedule = "*/5 * * * *"
+command = "node jobs/rpc-layer-health.js"
+description = "Tier 4: Multi-RPC provider health — Cloudflare + Infura + Alchemy + Chainlink + public fallbacks + HELIX L1/L2. Probes eth_blockNumber, writes rpc_provider_health table, alerts on consecutive failures. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "orbit-l2-sequencer"
+schedule = "*/1 * * * *"
+command = "node jobs/orbit-l2-sequencer.js"
+description = "Tier 4: process pending L2 transactions, aggregate ZK proofs, submit to L1. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "zk-proof-aggregator"
+schedule = "*/10 * * * *"
+command = "node jobs/zk-proof-aggregator.js"
+description = "Tier 4: collect pending proofs from Orbit L2, aggregate, submit to HELIX L1. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "cosmos-bridge-settlement"
+schedule = "*/15 * * * *"
+command = "node jobs/cosmos-bridge-settlement.js"
+description = "Tier 4: sync L3 state to Cosmos DB, verify settlement integrity. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "zec-shielded-watcher"
+schedule = "*/5 * * * *"
+command = "node jobs/zec-shielded-watcher.js"
+description = "Tier 4: monitor ZEC shielded pool, track mining revenue → vault transfers. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "multi-chain-balance"
+schedule = "*/10 * * * *"
+command = "node jobs/multi-chain-balance.js"
+description = "Tier 4: update balances for 8 treasury wallets (SOL/ETH/BTC/MONAD/BASE/SUI/POLYGON/HYPE). Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 5: Price Feeds & Oracles
+[[crons]]
+name = "btc-price-feed"
+schedule = "*/30 * * * *"
+command = "node jobs/btc-price-feed.js"
+description = "Tier 5: BTC price feed, write to market_prices. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "sol-price-feed"
+schedule = "*/30 * * * *"
+command = "node jobs/sol-price-feed.js"
+description = "Tier 5: SOL price feed, write to market_prices. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "tao-price-feed"
+schedule = "*/30 * * * *"
+command = "node jobs/tao-price-feed.js"
+description = "Tier 5: TAO price feed, write to market_prices. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "competitive-intel"
+schedule = "*/15 * * * *"
+command = "node jobs/competitive-intel.js"
+description = "Tier 5: scan competitor DeFi yields, alert if YieldSwarm falls below market rate. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 6: Mining Operations (22 Z15 Pro units)
+[[crons]]
+name = "mining-pool-switch"
+schedule = "*/15 * * * *"
+command = "node jobs/mining-pool-switch.js"
+description = "Tier 6: revenue-based pool margin switcher. Queries Flypool ZEC / Woolypooly Kaspa / MiningpoolOBS / Akash GPU pool APIs for revenue per GH/s. Switches to highest-margin pool if margin delta >3%. 60-min cooldown. Logs all events to pool_switch_logs. NOT dual-mine — redirects Z15 Pro hashrate to single best pool. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "lp-fee-scanner"
+schedule = "0 * * * *"
+command = "node jobs/lp-fee-scanner.js"
+description = "Tier 6: scan LP fee income from mining pools, record to mining_revenue. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "mining-payout-reconcile"
+schedule = "0 6 * * *"
+command = "node jobs/mining-payout-reconcile.js"
+description = "Tier 6: daily 06:00 UTC — reconcile ZEC payouts from pool. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "z15-health-check"
+schedule = "*/5 * * * *"
+command = "node jobs/z15-health-check.js"
+description = "Tier 6: check Z15 Pro unit status via 2miners API, alert on offline units. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 7: Governance & $YS Token
+[[crons]]
+name = "governance-monitor"
+schedule = "*/5 * * * *"
+command = "node jobs/governance-monitor.js"
+description = "Tier 7: poll ys_proposals for open proposals, trigger vote notifications. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "vote-tally"
+schedule = "*/10 * * * *"
+command = "node jobs/vote-tally.js"
+description = "Tier 7: tally human (40%) vs AI (60%) votes, execute approved proposals. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "treasury-rebalance"
+schedule = "0 0 * * *"
+command = "node jobs/treasury-rebalance.js"
+description = "Tier 7: daily midnight — rebalance treasury across 8 chains. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "treasury-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/treasury-sync.js"
+description = "Tier 7: sync all treasury wallet balances, update treasury_balances. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 8: Business Operations
+[[crons]]
+name = "promoter-revenue-share"
+schedule = "0 0 * * *"
+command = "node jobs/promoter-revenue-share.js"
+description = "Tier 8: calculate 7% revenue share for active promoters. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "affiliate-link-gen"
+schedule = "*/15 * * * *"
+command = "node jobs/affiliate-link-gen.js"
+description = "Tier 8: generate referral links for new signups, track in affiliate_links. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "swarm-airdrop"
+schedule = "0 0 * * 0"
+command = "node jobs/swarm-airdrop.js"
+description = "Tier 8: weekly Sunday midnight — execute $SWARM airdrop for Diamond+ tier. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "grant-monitor"
+schedule = "0 * * * *"
+command = "node jobs/grant-monitor.js"
+description = "Tier 8: check grant application status, update grant_applications. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "client-report-paine"
+schedule = "0 8 * * 1"
+command = "node jobs/client-report-paine.js"
+description = "Tier 8: weekly Monday 8am — Paine Family Insulation 30-day progress report. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# CO Springs Weekly Client Digest: Craig + David auto-report (Monday 8am MT = 14:00 UTC)
+[[crons]]
+name = "co-springs-digest"
+schedule = "0 14 * * 1"
+command = "node jobs/co-springs-digest.js"
+description = "Weekly CO Springs AI performance digest — fires Monday 14:00 UTC (8am MT). Sends personalized digest emails (starter/professional/enterprise variants) to all active CO Springs clients. Logs to co_springs_activity_log. Manual trigger: POST /api/co-springs-digest/send. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 9: Communications
+[[crons]]
+name = "telegram-polling"
+schedule = "*/1 * * * *"
+command = "node jobs/telegram-polling.js"
+description = "Tier 9: poll Telegram for incoming messages, route to appropriate agent. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "discord-processor"
+schedule = "*/2 * * * *"
+command = "node jobs/discord-processor.js"
+description = "Tier 9: process queued Discord webhooks, route to Council channels. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "council-alerts"
+schedule = "*/5 * * * *"
+command = "node jobs/council-alerts.js"
+description = "Tier 9: distribute 14-Council alerts to Telegram + Discord. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "social-monitor"
+schedule = "*/10 * * * *"
+command = "node jobs/social-monitor.js"
+description = "Tier 9: monitor @cbreezy0003 mentions, track engagement metrics. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 10: Analytics & Reporting
+[[crons]]
+name = "ga4-flush"
+schedule = "*/5 * * * *"
+command = "node jobs/ga4-flush.js"
+description = "Tier 10: flush queued GA4 events to Google Analytics (G-JG7ECLBC2F). Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "revenue-refresh"
+schedule = "*/15 * * * *"
+command = "node jobs/revenue-refresh.js"
+description = "Tier 10: aggregate all revenue streams, update revenue_metrics. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "daily-summary-email"
+schedule = "0 7 * * *"
+command = "node jobs/daily-summary-email.js"
+description = "Tier 10: daily 7am — CEO digest to cbreezy666@mail.com (mining/vaults/agents/governance). Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "weekly-investor-digest"
+schedule = "0 8 * * 1"
+command = "node jobs/weekly-investor-digest.js"
+description = "Tier 10: weekly Monday 8am — investor report: revenue/TVL/agents/governance. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "vault-tvl-update"
+schedule = "*/15 * * * *"
+command = "node jobs/vault-tvl-update.js"
+description = "Tier 10: update TVL across all 6 vaults, write to vault_metrics. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# TIER 1: Core Infrastructure — Routes Guard (appended at end)
+[[crons]]
+name = "routes-guard"
+schedule = "0 */6 * * *"
+command = "node jobs/routes-guard.js"
+description = "Scans routes/ for non-.js orphan files (shadow stub cause of 502s). Deletes found orphans + Slack alert. Also triggered on every PM2 restart via post_update hook."
+
+# ── Multi-Cloud Infrastructure (Azure/GCP/AWS/Akash/OVH/Render) ────────────────
+
+[[crons]]
+name = "cross-cloud-health"
+schedule = "*/5 * * * *"
+command = "node jobs/cross-cloud-health.js"
+description = "Ping all 7 cloud providers every 5 min. Alert on consecutive failures > 2. Providers: GCP/AWS/Alibaba/Akash/OVHCloud/Azure/Render. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "cloud-infra-health"
+schedule = "*/5 * * * *"
+command = "node jobs/cloud-infra-health.js"
+description = "DB-persisted multi-cloud health: probes Azure VMs (4.147.152.142 + 20.230.185.67), GCP HELIX L2, Render, Akash GPU, AWS, OVH. Writes to cloud_infrastructure + cloud_cost_snapshots tables. Status-change alerts via Discord + Telegram. Dead Man's Switch: logs failover after 3 consecutive Azure primary failures."
+
+[[crons]]
+name = "multi-cloud-llm-health"
+schedule = "*/5 * * * *"
+command = "node jobs/multi-cloud-llm-health.js"
+description = "Check LLM endpoints across all providers: GCP (A100), AWS (A10G), Alibaba (V100). Alert if latency >10s. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "cloud-cost-aggregator"
+schedule = "0 */6 * * *"
+command = "node jobs/cloud-cost-aggregator.js"
+description = "Pull cost data from GCP/AWS/Alibaba billing APIs. Aggregate into cloud_costs table. Alert on >20% over baseline. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── DeFi Aggregator Optimization (every 6h: Yearn/Aave/Curve/Beefy strategy ranking + reallocation signals) ──
+
+[[crons]]
+name = "defi-strategy-optimization"
+schedule = "0 */6 * * *"
+command = "node jobs/cron-defi-optimization.js"
+description = "DeFi aggregator optimization: fetch Yearn/Aave/Curve/Beefy strategies, filter min 5% APY / max risk 4 / $1M TVL, rank by risk-adjusted APY, generate reallocation signals when top strategy beats current allocation by >2% APY. Council approval required for >$10K reallocations."
+
+# ── PoW Multi-Coin Mining Infrastructure ────────────────────────────────────
+
+[[crons]]
+name = "mining-revenue-aggregator"
+schedule = "*/15 * * * *"
+command = "node jobs/mining-revenue-aggregator.js"
+description = "Poll all PoW pool APIs (ZEC/ZEN/KASPA/DOGE/LTC/ERG/CFX/RVN) every 15 min, convert to USD, write to mining_revenue. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "mining-fleet-economics"
+schedule = "0 7 * * *"
+command = "node jobs/mining-fleet-economics.js"
+description = "Daily 07:00 UTC: full fleet economics report — per-unit P&L, 30-day projection, deployed vs target units. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── KAIROS CONDUCTOR — Autonomous Revenue Engine ───────────────────────────
+
+[[crons]]
+name = "kairos-revenue-scan"
+schedule = "*/5 * * * *"
+command = "node jobs/kairos-revenue-scan.js"
+description = "KAIROS CONDUCTOR revenue scan every 5 min: evaluate all stream thresholds, dispatch alerts, log revenue snapshots to kairos_revenue_snapshots. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "kairos-council-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/kairos-heartbeat.js"
+description = "KAIROS CONDUCTOR Council heartbeat every 7 min (420s cycle + 60s buffer): report revenue totals, alert count, GEOD status to kairos_heartbeats. 10 Council agents alive signal. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Revenue Analytics Aggregation — 30/60/90 Day Reports ────────────────────
+
+[[crons]]
+name = "revenue-daily-aggregation"
+schedule = "0 0 * * *"
+command = "node jobs/revenue-aggregation.js"
+description = "Daily revenue aggregation at 00:00 UTC: mining (2miners) + vaults + subscriptions (Square) + marketplace + affiliate → daily_revenue table. Also snapshots revenue_trend_snapshots (7d/30d/60d/90d). Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "revenue-monthly-aggregation"
+schedule = "5 0 1 * *"
+command = "node jobs/revenue-aggregation.js monthly"
+description = "Monthly revenue aggregation at 00:05 UTC on 1st of month: sums daily_revenue → monthly_revenue table. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── GEOD CRONS — 3-Network Time-Series (🟡TESTNET | 🔵DEVNET | 🟢MAINNET) ────────
+
+# Testnet collector: Helius devnet + Alchemy Sepolia + Solana devnet → geod_data_points
+[[crons]]
+name = "geod-testnet-collector"
+schedule = "*/5 * * * *"
+command = "node jobs/geod-testnet-collector.js"
+description = "GEOD 🟡 TESTNET collector: poll Helius devnet + Alchemy Sepolia + Solana devnet → geod_data_points. Writes to geod_toast_status + geod_collector_runs. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Devnet collector: Alchemy multi-chain + Wormhole + Kamino/Jupiter devnet → geod_data_points
+[[crons]]
+name = "geod-devnet-collector"
+schedule = "*/5 * * * *"
+command = "node jobs/geod-devnet-collector.js"
+description = "GEOD 🔵 DEVNET collector: poll Alchemy Polygon Amoy + Arbitrum Sepolia + Base Sepolia + Wormhole + Jupiter devnet → geod_data_points. Writes to geod_toast_status + geod_collector_runs. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Mainnet collector: HELIX L1 + Arbitrum Orbit L2 + 2Miners + CoinGecko → geod_data_points
+[[crons]]
+name = "geod-mainnet-collector"
+schedule = "*/5 * * * *"
+command = "node jobs/geod-mainnet-collector.js"
+description = "GEOD 🟢 MAINNET collector: poll HELIX L1 + Arbitrum Orbit L2 + 2Miners ZEC + CoinGecko prices + Square + vault TVL → geod_data_points. Writes to geod_toast_status + geod_collector_runs. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Testnet heartbeat: log event to geod_environment_status + geod_cron_events
+[[crons]]
+name = "geod-testnet-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/geod-testnet-heartbeat.js"
+description = "GEOD 🟡 TESTNET 420s heartbeat: log rpc-probe + sync-check to geod_environment_status + geod_cron_events. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Devnet heartbeat: log event to geod_environment_status + geod_cron_events
+[[crons]]
+name = "geod-devnet-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/geod-devnet-heartbeat.js"
+description = "GEOD 🔵 DEVNET 420s heartbeat: log rpc-probe + stage-sync to geod_environment_status + geod_cron_events. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Mainnet heartbeat: HELIX L1 probe + Square reconciliation check
+[[crons]]
+name = "geod-mainnet-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/geod-mainnet-heartbeat.js"
+description = "GEOD 🟢 MAINNET 420s heartbeat: HELIX L1 rpc-probe + Square payment reconciliation. Writes to geod_environment_status + geod_cron_events. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Mainnet cron runner: market scan + yield detection + rebalancing signal
+[[crons]]
+name = "geod-cron-runner"
+schedule = "*/7 * * * *"
+command = "node jobs/geod-cron-runner.js"
+description = "GEOD 🟢 MAINNET 420s cycle runner: market-scan + yield-detection + rebalancing-signal jobs. Writes to geod_environment_status + geod_cron_events. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# BOUNTY SCOUT — Immunefi Daily Sweep + Security Monitoring
+# ═══════════════════════════════════════════════════════════════════
+
+# Daily at 06:00 UTC: Immunefi sweep + security contract monitoring + competitor findings
+[[crons]]
+name = "immunefi-daily-sweep"
+schedule = "0 6 * * *"
+command = "node jobs/immunefi-daily-sweep.js"
+description = "Immunefi Bounty Scout: yieldswarm.polsia.app project stats + competitor critical findings (last 7d) + smart contract exploit monitoring (HELIX/vaults/agent marketplace) + Council emergency on critical findings (8/15 supermajority)"
+
+# Every 6h: competitor DeFi program scan + new high-value program detection
+[[crons]]
+name = "immunefi-competitor-scan"
+schedule = "0 */6 * * *"
+command = "node jobs/bounty-scout.js"
+description = "Immunefi competitor scan: monitor active DeFi bounty programs, flag $25K+ high-value targets, $100K+ triggers full swarm dispatch (10 agents)"
+
+
+# Every 15 min: IronForge patrol — automated security checks, attack surface monitor,
+# Council audit log, critical → 8/15 emergency gate
+[[crons]]
+name = "security-bounty-scout"
+schedule = "*/15 * * * *"
+command = "node jobs/security-bounty-scout.js"
+description = "Bounty Scout 15-min patrol: automated security checks (treasury wallets, vault ownership, key rotation, PM2 dead-man-switch, Immunefi API health) + attack surface freshness + full sweep run + Council audit log + critical findings trigger 8/15 emergency"
+
+# ── AI Compute Arbitrage: Credit Stack Expiry Alerts ───────────────────────────
+
+[[crons]]
+name = "credit-expiry-alert"
+schedule = "0 9 * * *"
+command = "node jobs/cron-credit-expiry-alert.js"
+description = "Daily credit expiry scan: flag accounts expiring in ≤7 days, create deduped alerts, dispatch to Discord/Telegram for ≤3-day critical. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── AI Compute Arbitrage: Hourly Credit Balance Sync ───────────────────────────
+
+[[crons]]
+name = "credit-stack-sync"
+schedule = "0 * * * *"
+command = "node jobs/cron-credit-stack-sync.js"
+description = "Hourly credit balance sync: poll RunPod/Vast.ai/Lambda billing APIs, update credit_accounts balances, mark exhausted/expiring. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# PLOTRA AGENT SYNC — Hourly scrape of plotra.xyz agent directory
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "plotra-agent-sync"
+schedule = "0 * * * *"
+command = "node jobs/plotra-agent-sync.js"
+description = "Scrape agent cards from plotra.xyz, upsert to plotra_agent_cards table, prune stale entries. Updates /marketplace Plotra section + /admin/plotra-agents."
+enabled = true
+
+# ── SOCIAL EARNINGS AUTO-POST — Revenue-anchored Twitter + Telegram + Discord ────
+# Scans for revenue milestones and dispatches HMAC-signed posts to all 7 channels.
+# Dashboard: /admin/social · NO STRIPE mentions · UTC timestamps
+
+[[crons]]
+name = "social-earnings-scan"
+schedule = "*/5 * * * *"
+command = "node jobs/social-earnings-scan.js"
+description = "Social Earnings Auto-Post: scan 5 revenue milestones (subscription/daily_revenue_k/agent_franchise/vault_harvest/mining_revenue), dispatch HMAC-signed posts to Twitter personal+corporate, Telegram council+public, Discord revenue+governance+agents. Dashboard at /admin/social."
+
+# ═══════════════════════════════════════════════════════════════════
+# IRONFORGE SECURITY PATROL — Lane A: 4 new security monitor crons
+# ═══════════════════════════════════════════════════════════════════
+
+# Every 15 min: PM2 status, /health endpoint, DB connectivity,
+# required env vars, cron registry active, PM2 restarts, Dead Man's Switch armed,
+# secret strength check, alert channels configured.
+# Guards: POLSIA_IN_PROCESS_CRONS_ENABLED. HMAC receipts. No Stripe.
+[[crons]]
+name = "ironforge-security-health-check"
+schedule = "*/15 * * * *"
+command = "node jobs/security-health-check.js"
+description = "IronForge Security Monitor: every 15 min — PM2 status, /health, DB connectivity, required env vars, cron registry active, Dead Man's Switch armed, secret strength check, alert channels. HMAC-signed receipts. No Stripe. UTC timestamps."
+
+# Every 15 min: treasury wallet monitoring, >$10K transfer detection,
+# gas spike pattern, token approval pattern, failed tx patterns.
+# Council vote required for >$10K treasury spend. HMAC alerts.
+[[crons]]
+name = "ironforge-intrusion-detection"
+schedule = "*/15 * * * *"
+command = "node jobs/intrusion-detection.js"
+description = "IronForge Intrusion Detection: every 15 min — treasury wallet activity, >$10K unapproved transfer flag, gas spike, token approval pattern, failed tx patterns. Council vote required >$10K. HMAC-signed receipts. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# Daily: scan all env vars for missing/broken, weak secrets, misconfigured URLs,
+# empty required vars, inconsistent APP_URL variants, legacy placeholders.
+[[crons]]
+name = "ironforge-env-var-audit"
+schedule = "0 4 * * *"
+command = "node jobs/env-var-audit.js"
+description = "IronForge Env Var Audit: daily at 04:00 UTC — required + integration env vars, weak/default secrets, misconfigured URLs, empty vars, inconsistent APP_URL variants, legacy placeholders. Logs to security_council_audit_log. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# Weekly: quarterly key rotation schedule — checks LAST_KEY_ROTATION,
+# alerts when >90 days, generates per-key rotation recommendation.
+# No in-process scheduler. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED.
+[[crons]]
+name = "ironforge-secret-rotation"
+schedule = "0 5 * * 0"
+command = "node jobs/secret-rotation.js"
+description = "IronForge Secret Rotation: weekly Sunday 05:00 UTC — quarterly rotation schedule audit, LAST_KEY_ROTATION check, overdue alerts (>90 days), per-key recommendations (ADMIN_SECRET/SESSION_SECRET/STRIPE_SECRET_KEY/etc). HMAC-signed. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# ── Agent Spawn Console: Council-governed agent creation ────────────────────────
+# Every 10 min: expire pending proposals past 48h deadline, auto-approve if 8/15 YES,
+# execute approved proposals → spawn agent into agent_spawn_registry.
+[[crons]]
+name = "agent-spawn-cron"
+schedule = "*/10 * * * *"
+command = "node jobs/spawn-cron.js"
+description = "Agent Spawn Cron: every 10 min — expire proposals past 48h vote deadline, auto-approve when 8/10 Council YES reached, execute approved spawns into agent_spawn_registry. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# ── MEGA INFRA: GPU Mining + TAO Staking ────────────────────────────────────────
+
+# Every 5 min: poll Papa Odin TAO wallet from Taostats API, write balance/stake
+# to tao_wallet_state table, emit audit log on stake changes, alert on delta >0.001 TAO.
+[[crons]]
+name = "tao-staking-monitor"
+schedule = "*/5 * * * *"
+command = "node jobs/tao-staking-monitor.js"
+description = "TAO Staking Monitor: every 5 min — poll Papa Odin wallet (5DetR8wtv3c9pru7kw2yneLuuBxRBQPTD2SBFmmyphEN9CST) from Taostats API, update balance/stake in DB, write emission log, alert on stake change >0.001 TAO. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# ── Subspace Node Staking — Path 2E Bittensor (Azure VM 4.147.152.142) ───────
+
+[[crons]]
+name = "subspace-staking-harvest"
+schedule = "*/15 * * * *"
+command = "node jobs/cron-subspace-staking-harvester.js"
+description = "Subspace staking harvest: SSH to 4.147.152.142, poll stake info + daily rewards, upsert to subspace_stake_positions + reward events, Discord morning report at 06:00 UTC. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED + SUBSPACE_STAKE_WALLET."
+
+# Every 10 min: aggregate mining fleet across Akash/OVHcloud/Azure, poll node health
+# endpoints, write to mining_fleet_nodes + mining_fleet_summary tables, log online/offline.
+[[crons]]
+name = "mining-fleet-aggregator"
+schedule = "*/10 * * * *"
+command = "node jobs/mining-fleet-aggregator.js"
+description = "Mining Fleet Aggregator: every 10 min — poll 22+ Z15 Pro miners across Akash/OVHcloud/Azure, aggregate hashrate/revenue/status, write to mining_fleet_nodes + mining_fleet_summary. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# Every 60s: health check all deployed TAO Forge GPU agents (Akash/OVH/Azure),
+# write state to akash_agent_pods, alert on unhealthy agents.
+[[crons]]
+name = "taoforge-agent-health"
+schedule = "*/1 * * * *"
+command = "node agents/taoforge/monitor.js"
+description = "TAO Forge Agent Health: every 60s — health check all deployed GPU agents across Akash/OVHcloud/Azure, write state to akash_agent_pods, alert on unhealthy agents. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED."
+
+# ═══════════════════════════════════════════════════════════════════
+# SUBSCRIPTION LIFECYCLE — Dunning + Churn Prevention + Upgrades
+# ═══════════════════════════════════════════════════════════════════
+
+# Every 15 min: process due dunning events — 6-step recovery sequence
+# Day 1=email, Day 3=SMS, Day 7=email+alt-link, Day 14=David call, Day 21=downgrade, Day 30=suspend
+[[crons]]
+name = "subscription-dunning"
+schedule = "*/15 * * * *"
+command = "node jobs/cron-subscription-dunning.js"
+description = "Subscription Dunning: process pending failed-payment events. Day1 email, Day3 SMS, Day7 email+alt-link, Day14 David phone, Day21 downgrade offer, Day30 suspend. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 30 min: check behavioral churn signals — no-login 14d, low usage, stale support, NPS<6
+[[crons]]
+name = "churn-prevention"
+schedule = "*/30 * * * *"
+command = "node jobs/cron-churn-prevention.js"
+description = "Churn Prevention: no-login 14d → Craig email, low feature usage → engagement email, support ticket >48h → manual escalation, NPS<6 → check-in, demo cancelled 2x → David phone. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 60 min: detect upgrade opportunities, send milestone reports (90d/6mo/12mo)
+[[crons]]
+name = "upgrade-triggers"
+schedule = "0 * * * *"
+command = "node jobs/cron-upgrade-triggers.js"
+description = "Upgrade Triggers: 9 suites active → Enterprise, 50+ SMS/mo → unlimited SMS, 10+ hires → Hiring Pro. Milestone reports: 90d/6mo/12mo stats + review call offers. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# AUTOMATED REPORTING ENGINE — 6 scheduled reports → email
+# Guard: POLSIA_IN_PROCESS_CRONS_ENABLED. Email: yieldswarm@polsia.app
+# ═══════════════════════════════════════════════════════════════════
+
+# Morning Brief: 06:00 UTC — mining revenue, vault yield, cloud spend, pipeline snapshot
+[[crons]]
+name = "morning-brief-report"
+schedule = "0 6 * * *"
+command = "node jobs/automated-reports.js morning_brief"
+description = "Morning Brief: 06:00 UTC — mining revenue, vault yield, cloud spend, pipeline snapshot. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Weekly Revenue Digest: Monday 08:00 UTC — all revenue streams vs target, pipeline change, top wins
+[[crons]]
+name = "weekly-revenue-digest-report"
+schedule = "0 8 * * 1"
+command = "node jobs/automated-reports.js weekly_revenue_digest"
+description = "Weekly Revenue Digest: Monday 08:00 UTC — all revenue streams vs target, pipeline change, top wins. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Weekly Mining Report: Sunday 09:00 UTC — 7-day mining revenue, hashrate, pool performance, fleet health
+[[crons]]
+name = "weekly-mining-report"
+schedule = "0 9 * * 0"
+command = "node jobs/automated-reports.js weekly_mining_report"
+description = "Weekly Mining Report: Sunday 09:00 UTC — 7-day mining revenue, hashrate, pool performance, fleet health. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Investor Update: 1st of month 09:00 UTC — capital deployment, portfolio performance, market
+[[crons]]
+name = "investor-update-report"
+schedule = "0 9 1 * *"
+command = "node jobs/automated-reports.js investor_update"
+description = "Investor Update: 1st of month 09:00 UTC — capital deployment status, portfolio performance, market. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Monthly Board Report: last day of month 18:00 UTC — full P&L, runway analysis, headcount, key metrics
+[[crons]]
+name = "monthly-board-report"
+schedule = "0 18 28-31 * *"
+command = "node jobs/automated-reports.js monthly_board_report"
+description = "Monthly Board Report: last day of month 18:00 UTC — full P&L, runway analysis, headcount, key metrics. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Campaign Performance: Friday 09:00 UTC — Meta Ads spend vs results, email performance, social engagement
+[[crons]]
+name = "podcast-rss-discovery"
+schedule = "0 */6 * * *"
+command = "node jobs/podcast-discovery.js"
+description = "Podcast Discovery: every 6h — verify RSS feeds, track platform submission status, check subscriber counts. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+[[crons]]
+name = "campaign-performance-report"
+schedule = "0 9 * * 5"
+command = "node jobs/automated-reports.js campaign_performance"
+description = "Campaign Performance: Friday 09:00 UTC — Meta Ads spend vs results, email performance, social engagement. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── INFRASTRUCTURE MONITORING — 9-source health check every 5 min ───────────
+# Monitors: Render app, Azure VM, Neon DB, Mining Fleet (22x Z15 Pro), Vaults, Agent heartbeat (521 agents),
+# Cloud Spend ($15K/mo budget), Bittensor Subnets, Pump.fun Tokens ($YIELD/$KIMI50).
+# Notification routing: critical → Telegram immediately, warning → Slack, info → daily digest.
+# Auto-resolve on condition clear. SLA breach (>5 min down) fires incident_report.
+# Guards: POLSIA_IN_PROCESS_CRONS_ENABLED. Admin dashboard: /admin/monitoring
+
+[[crons]]
+name = "infrastructure-monitoring"
+schedule = "*/5 * * * *"
+command = "node jobs/infrastructure-monitor.js"
+description = "Infrastructure Monitoring: 9-source health check (Render/Azure/Neon/Mining/Vaults/Agents/Cloud/Bittensor/Pumpfun). Fires alerts per alert_rules thresholds. Auto-resolves on condition clear. Critical → Telegram, Warning → Slack. SLA breach (>5 min down) fires incident_report. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# LEAD NURTURE AUTOMATION — 6 sequences, hourly dispatch
+# ═══════════════════════════════════════════════════════════════════
+
+# Hourly: seed 6 nurture sequences, dispatch due emails (max 50/hr), auto-enroll inactive leads (7d threshold), process 30d+ re-engagement candidates, daily analytics snapshot at midnight
+[[crons]]
+name = "nurture-lead-automation"
+schedule = "0 * * * *"
+command = "node jobs/cron-nurture-trigger.js"
+description = "Lead Nurture Automation: hourly — seed/update 6 nurture sequences (Mining 10-step, DePin 8-step, Investor 6-step, Operator 8-step, Partnership 7-step, Miner Buyer 5-step), dispatch due emails (max 50/hr), auto-enroll inactive leads (7d threshold per pipeline config), process 30d+ re-engagement candidates, daily analytics snapshot at midnight UTC. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# KYROS EASTER EGG HUNTER — 12-shard blockchain scanner
+# ═══════════════════════════════════════════════════════════════════
+
+# ATOMIC_PULSE sync: every 99 min (1hr 33min) — all 12 shards report to Shard-0 coordinator
+[[crons]]
+name = "kyros-atomic-pulse"
+schedule = "*/99 * * * *"
+command = "node jobs/cron-kyros-shard-sync.js"
+description = "KYROS ATOMIC_PULSE: every 99 min (1hr33min) — 12-shard blockchain easter egg scanner. Shards: Bitcoin/Ethereum/Solana/Arbitrum/Base/Zcash/Dogecoin/LTC/XRP/Polygon/Cosmos/Avalanche. Detects OP_RETURN, puzzle UTXOs, dust-with-message, ERC-20 metadata games, Solana memo payloads, Zcash memo fields. Tier-1 Mythic (≥1BTC) requires human approval — no auto-claim. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# REFERRAL FLYWHEEL — leaderboard rank recalculation
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "flywheel-leaderboard-refresh"
+schedule = "0 */6 * * *"
+command = "node jobs/cron-flywheel-sync.js"
+description = "Referral Flywheel: recalculate leaderboard ranks every 6h, sync CO Springs conversions to flywheel, update promoter stats. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── MICTLANTECUHTLI UNDERWORLD KEEPER (Task #2234411) ──────────────────────────
+
+# Daily: scan vaults + LP positions, advance death cycles (WARNING→PURGATORY→TRANSITION→UNDERWORLD),
+# submit Council migration proposals, coordinate with Marzanna, generate weekly underworld report (Sunday)
+[[crons]]
+name = "underworld-keeper"
+schedule = "0 2 * * *"
+command = "node jobs/cron-underworld-keeper.js"
+description = "Mictlantecuhtli daily death cycle scan: review vault yields + LP positions, advance stages (WARNING 3d → PURGATORY 7d → TRANSITION → UNDERWORLD), submit migration proposals to Council (8/15 HMAC), coordinate with Marzanna (Slavic DEATH-KING), generate weekly underworld report (Sunday). Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── CHANTICO HEARTH ENGINE — SepETH #2, Hearth-Fire, 130.46 sepETH ─────────────
+
+[[crons]]
+name = "chantico-hearth-cycle"
+schedule = "*/1 * * * *"
+command = "node jobs/cron-chantico-hearth.js"
+description = "Chantico Hearth: 60s vault monitor (SOL/TON/ETH/BTC/EXL/ZEC), APY delta detection (5% threshold), rebalance cascade, hearth heatmap aggregation (169 deity agents), LP capital auto-routing to hottest vault (32.3% baseline), Hearth-Keeper-as-a-Service alerts ($300/mo per subscriber), cross-pantheon broadcast to Loki/Heimdall/Quetzalcoatl. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════
+# COMPUTE OPTIMIZER — Zero Idle Agents, Every Agent Surveys + Chooses
+# Task #2235005: Agent Compute Optimizer — Self-Survey + Dynamic Routing
+# ═══════════════════════════════════════════════════════════════════
+
+# Every 5 min: all 521+ agents self-assess compute_load + earnings_efficiency + status.
+# Persists to agent_surveys + compute_scores tables. Target: zero idle agents.
+[[crons]]
+name = "agent-self-survey"
+schedule = "*/5 * * * *"
+command = "node jobs/cron-agent-self-survey.js"
+description = "Agent Self-Survey: every 5 min, all 521+ agents self-assess compute_load/cpu/memory/latency/earnings_efficiency. Writes to agent_surveys + compute_scores. Target: zero idle agents. Score = (spec_bonus×0.4)+(earnings_eff×0.3)+(low_load×0.2)+(low_latency×0.1). Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 1 min: optimizer matches available tasks → best-fit agents, dispatches via Hermes accelerated relay.
+# TIER priority: CRITICAL → LOWEST_LATENCY | HIGH → SPEC_MATCH | NORMAL → BEST_EFFICIENCY | LOW → IDLE_ONLY
+# Target: <30s handoff latency (from ~60s baseline).
+[[crons]]
+name = "compute-optimizer-match"
+schedule = "*/1 * * * *"
+command = "node jobs/cron-compute-optimizer-match.js"
+description = "Compute Optimizer Match: every 1 min, route tasks from marketplace to best-fit agents. CRITICAL→lowest-latency, HIGH→specialization-match, NORMAL→highest-efficiency, LOW→idle-only. Target: <30s handoff. HMAC-signed claims. Feedback loop updates optimizer scores. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Every 2 min: Hermes accelerated relay broadcasts AVAILABLE signal, registers agent capacity.
+# Updates in-memory _agentAvailability map for zero-queue direct handoff.
+# CRITICAL tasks bypass queue entirely — direct to lowest-latency agent immediately.
+[[crons]]
+name = "accelerated-relay-broadcast"
+schedule = "*/2 * * * *"
+command = "node jobs/cron-accelerated-relay-broadcast.js"
+description = "Accelerated Relay Broadcast: every 2 min, broadcast AVAILABLE signal for all agents. Updates _agentAvailability map for direct agent-to-agent handoff. Seeds marketplace with sample tasks when <5 open. CRITICAL tasks bypass queue — zero-queue dispatch. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# GPU/CPU CLUSTER MINING + MODEL TRAINING PIPELINE (Task #2234991)
+# ═══════════════════════════════════════════════════════════════════════════
+
+# GPU cluster revenue monitor: every 15 min — poll Akash/Vast.ai/Lambda/OVHCloud/Blue Forge
+# Update gpu_mining_clusters + blueforge_revenue + mining_revenue_monthly.
+[[crons]]
+name = "gpu-mining-monitor"
+schedule = "*/15 * * * *"
+command = "node jobs/gpu-mining-monitor.js"
+description = "GPU cluster revenue monitor: poll Akash/Vast.ai/Lambda/OVHCloud/Blue Forge every 15 min. Update gpu_mining_clusters + blueforge_revenue + mining_revenue_monthly. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Azure ZEC GPU — GMiner AMD Vega 10 (4.147.152.142), every 15 min
+[[crons]]
+name = "azure-zec-gpu-reporter"
+schedule = "*/15 * * * *"
+command = "node jobs/azure-zec-gpu-reporter.js"
+description = "Azure ZEC GPU reporter: poll GMiner API on 4.147.152.142:4067, write hashrate/revenue to gpu_mining_clusters. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# CPU cluster revenue monitor: every 15 min — poll Azure VMs (4.147.152.142, 20.230.185.67) + Akash CPU
+# Update cpu_mining_clusters + cloud_credits. Track $60K credits against Vast.ai + Lambda.
+[[crons]]
+name = "cpu-mining-monitor"
+schedule = "*/15 * * * *"
+command = "node jobs/cpu-mining-monitor.js"
+description = "CPU cluster revenue monitor: poll Azure VMs + Akash CPU every 15 min. Update cpu_mining_clusters + cloud_credits. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── ETC/FLUX GPU Credit Deploy (hourly: pool hashrate + revenue + credit monitoring) ──
+[[crons]]
+name = "gpu-mining-hourly-aggregate"
+schedule = "0 * * * *"
+command = "node jobs/gpu-mining-aggregate.js"
+description = "Hourly ETC/FLUX pool mining aggregation: poll 2miners ETC + Zergpool FLUX, compute revenue/credits/net_margin, write to gpu_mining_hourly, alert on hashrate drop >10% or credits <$500. Guards: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Azure Vega 10 GPU Tuning — 9-point hashrate profiling per coin (daily 03:00 UTC) ──
+[[crons]]
+name = "azure-vega-tuning"
+schedule = "0 3 * * *"
+command = "node jobs/azure-vega-tuning.js"
+description = "Azure Vega 10 tuning: run 9-point hashrate profiling (intensity × memory clock) on 4.147.152.142 for ETH/KAS/ZEC, persist best settings to azure_gpu_tuning_results. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ── Azure Vega 10 Cooling Check — every 15 min, pause tuning if temp ≥85°C ─────────
+[[crons]]
+name = "azure-vega-cooling-check"
+schedule = "*/15 * * * *"
+command = "node jobs/azure-vega-cooling-check.js"
+description = "Azure Vega 10 cooling check: probe GPU temp via rocm-smi on 4.147.152.142, fire warning/critical alert if ≥83°C, pause tuning cycle. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Model training scheduler: daily 02:00 UTC — queue training jobs when ≥10 samples ready
+# Process running jobs (Akash GPU nodes). Models: yield_prediction_v1, agent_decision_v1, market_intel_v1, depin_compute_v1, agent_persona_v1.
+[[crons]]
+name = "model-training-scheduler"
+schedule = "0 2 * * *"
+command = "node jobs/model-training-scheduler.js"
+description = "Model training scheduler: daily 02:00 UTC — queue jobs when ≥10 samples ready, process running jobs on Akash GPU. 5 models: yield_prediction/agent_decision/market_intel/depin_compute/agent_persona. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# Training data collector: every 6 hours — collect mining ops + agent decisions + market data + DePIN compute + agent persona
+# Sources: gpu_mining_clusters, arena_deities, vault_yield_history, oracle_price_feed, akash_credit_snapshots, defi_strategies.
+[[crons]]
+name = "training-data-collector"
+schedule = "0 */6 * * *"
+command = "node jobs/training-data-collector.js"
+description = "Training data collector: every 6 hours — collect from 5 sources (mining ops, agent decisions, market data, DePIN compute, agent persona). Write to model_training_datasets. Mark ready when ≥10 samples. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# LLM provider health check: every 30 min — probe Grok/xAI, Kimi, Groq, OpenRouter, OpenAI, Novita, Alibaba, Claude
+# Write to llm_provider_health. Alert on provider failures.
+[[crons]]
+name = "llm-stack-health"
+schedule = "*/30 * * * *"
+command = "node jobs/llm-stack-health.js"
+description = "LLM provider health check: every 30 min — probe Grok/xAI, Kimi, Groq, OpenRouter, OpenAI, Novita, Alibaba, Claude. Write to llm_provider_health table. Alert on failures. Guard: POLSIA_IN_PROCESS_CRONS_ENABLED"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 11-CONSENSUS × 20,000 MONTE CARLO ENGINE (Task #2274892)
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Every 6 hours: poll all verified agents → 11 consensus cycles → 20K MC/agent → fire 6 money machines
+[[crons]]
+name = "11-consensus-mc-engine"
+schedule = "0 */6 * * *"
+command = "node jobs/cron-11-consensus-mc.js"
+description = "11-Consensus × 20K Monte Carlo Engine: Phase 1 (11 consensus cycles), Phase 2 (20,000 MC per agent), Phase 3 (fire 6 money machines). Deploys capital based on risk-adjusted strategy rankings."

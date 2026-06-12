@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: yieldswarm
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    healthCheckInterval: 30s
+    healthCheckTimeout: 60s
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: true
+        value: REDACTED/neondb?sslmode=require
+      - key: ADMIN_SECRET
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: UD_WIRE_BOOT
+        sync: false
+        value: 'true'

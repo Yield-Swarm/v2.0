@@ -1,0 +1,533 @@
+# polsia.toml — YieldSwarm Cron Registry
+# All recurring product work declared here. Polsia executes via external processes.
+# Jobs live in /jobs/*.js and run via `node jobs/filename.js`
+
+# ═══════════════════════════════════════════════════════════════════
+# HELIX SOVEREIGN CHAIN CRONS
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "helix-block-sync"
+schedule = "*/1 * * * *"
+command = "node jobs/helix-block-sync.js"
+description = "Sync HELIX blocks across all 3 networks (devnet/testnet/livenet)"
+enabled = true
+
+[[crons]]
+name = "helix-agent-balance-sweep"
+schedule = "*/7 * * * *"
+command = "node jobs/helix-tithe.js"
+description = "20% tithe sweep from active agent balances to Council treasury on devnet"
+enabled = true
+
+[[crons]]
+name = "helix-validator-health"
+schedule = "*/5 * * * *"
+command = "node jobs/helix-validator-health.js"
+description = "Health probe all 3 HELIX network RPC endpoints + metrics snapshot"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# CONTENT & REPORTING
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "kalediscope-daily-sop"
+schedule = "0 0 * * *"
+command = "node jobs/kalediscope-daily-sop.js"
+description = "Kaleidoscope 8-facet × 11-layer SOP + 657-agent FAQ broadcast + founder digest"
+enabled = true
+
+[[crons]]
+name = "content-sync"
+schedule = "0 */5 * * *"
+command = "node jobs/content-sync.js"
+description = "5H cycle: live stats → public/status.md, 8×8 Council vote matrix, marketing report"
+enabled = true
+
+[[crons]]
+name = "ironforge-monitor"
+schedule = "0 * * * *"
+command = "node jobs/ironforge-monitor.js"
+description = "Hourly 14-endpoint health patrol + Coalition Vote → STABLE/CONDITIONAL/LOCKDOWN"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# TWITTER AUTONOMOUS CYCLE
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "twitter-coin-cycle"
+schedule = "0 */6 * * *"
+command = "node jobs/twitter-coin-cycle.js"
+description = "5-coin round-robin tweet: coin→content→Council 3/5 gate→post via @YieldSwarm"
+enabled = true
+
+[[crons]]
+name = "twitter-engagement-monitor"
+schedule = "*/30 * * * *"
+command = "node jobs/twitter-engagement-monitor.js"
+description = "Spike detection + Telegram council alerts every 30 min"
+enabled = true
+
+[[crons]]
+name = "twitter-intel-scan"
+schedule = "0 */2 * * *"
+command = "node jobs/twitter-intel-scan.js"
+description = "Reddit r/crypto|defi|zec|BitCoin scan + keyword scoring every 2h"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# EGYPTIAN ARENA + AGENT SWEEP
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "egyptian-arena-sweep"
+schedule = "0 */6 * * *"
+command = "node jobs/egyptian-arena-sweep.js"
+description = "6H sweep: testnet/devnet/mainnet arenas, wallet audit, 80 Alchemy endpoints, 7 HELIX chains"
+enabled = true
+
+[[crons]]
+name = "agent-sweep-engine"
+schedule = "*/7 * * * *"
+command = "node jobs/agent-sweep-engine.js"
+description = "6,602 agents collecting HELIX block rewards on 420s cycle + ZEC→Kraken conversion"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# PUMP.FUN + SNIPER BOTS
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "pump-sniper-monitor"
+schedule = "*/30 * * * *"
+command = "node jobs/pump-sniper-monitor.js"
+description = "Poll pump.fun recent tokens, auto-arm sub-$5K mcap, fire buys at criteria"
+enabled = true
+
+[[crons]]
+name = "mayhem-striker-1-watchdog"
+schedule = "*/10 * * * *"
+command = "node jobs/mayhem-striker-1.js"
+description = "Restart Mayhem Striker 1 if session=running but in-memory stopped"
+enabled = true
+
+[[crons]]
+name = "pump-graduation-watcher"
+schedule = "*/7 * * * *"
+command = "node jobs/pump-fun-graduation-watcher.js"
+description = "Auto-wire 6 agents on graduation; Raydium CLMM sell route post-graduation"
+enabled = true
+
+[[crons]]
+name = "kimi50-mayhem-signal-processor"
+schedule = "*/5 * * * *"
+command = "node jobs/kimi50-mayhem-signal-processor.js"
+description = "Poll kimi50_yield_signals → execute Mayhem trades on pump.fun; combined circuit breaker check"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# DEEPSEEK + BITTENSOR
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "tao-subnet-harvest"
+schedule = "*/15 * * * *"
+command = "node jobs/tao-subnet-harvest.js"
+description = "Council subnet vote + CoinGecko price + Subtensor balance + HMAC morning report"
+enabled = true
+
+[[crons]]
+name = "deepseek-council-vote"
+schedule = "0 */4 * * *"
+command = "node jobs/deepseek-council-vote.js"
+description = "Akash DeepSeek GPU Forge: council vote on DeepSeek integration + usage tracking"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# OUTREACH + MARKETING
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "cold-outreach"
+schedule = "0 8 * * 1-5"
+command = "node jobs/cold-outreach.js"
+description = "Weekdays 08:00 UTC cold outreach via Kalediscope pipeline"
+enabled = true
+
+[[crons]]
+name = "marketing-llm-cycle"
+schedule = "0 */3 * * *"
+command = "node jobs/marketing-llm.js"
+description = "3H marketing content generation cycle"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# AGENT WALLET SEEDING
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "agent-wallet-seeder"
+schedule = "0 3 * * *"
+command = "node jobs/agent-wallet-seeder.js"
+description = "Daily 03:30 UTC: AES-256-GCM wallet generation for new agents across SOL/ETH/ZEC/Base"
+enabled = true
+
+[[crons]]
+name = "ys-price-feed"
+schedule = "*/1 * * * *"
+command = "node jobs/ys-price-feed.js"
+description = "60s Jupiter + DexScreener polling for $YS price + bond curve history"
+enabled = true
+
+[[crons]]
+name = "ys-bond-curve-monitor"
+schedule = "*/1 * * * *"
+command = "node jobs/ys-bond-curve-monitor.js"
+description = "60s pump.fun mcap track, 6-agent auto-buy grid for $YS bond curve"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# SUSANOO STORM PROCESSING — SepETH #1 Deity (131.49 sepETH, 21% APY, STORM-SWIFT)
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "susanoo-storm-process"
+schedule = "*/15 * * * *"
+command = "node jobs/susanoo-storm-process.js"
+description = "Susanoo (SepETH #1, 131.49 sepETH, STORM-SWIFT): DePIN 10-network sweep + batch yield optimization + Shinto cross-pantheon relay + 33-min storm engine cycle. Guarded by POLSIA_IN_PROCESS_CRONS_ENABLED."
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# MISC PRODUCT CRONS
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "vault-yield-accrual"
+schedule = "0 1 * * *"
+command = "node jobs/vault-yield-accrual.js"
+description = "Daily 01:00 UTC: APR/365 × amount per vault_subscriptions; auto-mature at lock expiry"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# AUTONOMOUS YIELD OPTIMIZER — Vault Harvest Engine
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "vault-yield-monitor"
+schedule = "*/5 * * * *"
+command = "node jobs/vault-yield-monitor.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 5 min: health snapshot for all 6 vaults (BTC/ETH/SOL/TON/ARB/HELIX) + multi-chain GEOD sync"
+enabled = true
+
+[[crons]]
+name = "vault-harvest-sol"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-sol-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest SOL vault when APY delta >2% OR yield >=$50. 70/30 compound/treasury split."
+enabled = true
+
+[[crons]]
+name = "vault-harvest-eth"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-eth-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest ETH vault when APY delta >2% OR yield >=$50."
+enabled = true
+
+[[crons]]
+name = "vault-harvest-btc"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-btc-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest BTC vault when APY delta >2% OR yield >=$50."
+enabled = true
+
+[[crons]]
+name = "vault-harvest-ton"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-ton-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest TON vault when APY delta >2% OR yield >=$50."
+enabled = true
+
+[[crons]]
+name = "vault-harvest-tao"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-tao-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest TAO vault when APY delta >2% OR yield >=$50."
+enabled = true
+
+[[crons]]
+name = "vault-harvest-exl"
+schedule = "*/15 * * * *"
+command = "node jobs/harvest-exl-vault.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 15 min: harvest EXL (HELIX L2 / ARB) vault when APY delta >2% OR yield >=$50."
+enabled = true
+
+[[crons]]
+name = "defi-rebalance-check"
+schedule = "0 */6 * * *"
+command = "node jobs/cron-defi-optimization.js"
+description = "⟨GOD_MODE_LUDICROUS⟩ Every 6h: DeFi strategy rebalance — compare Yearn/Aave/Curve/Beefy to current vault allocations, signal when delta >2% APY. Council vote required >$10K."
+enabled = true
+
+[[crons]]
+name = "perplexity-intel-scan"
+schedule = "0 */2 * * *"
+command = "node jobs/huginn-watch.js"
+description = "2H Huginn scan: crypto prices, competitor intel, airdrops/grants, mining news, GPU pricing"
+enabled = true
+
+[[crons]]
+name = "council-perplexity-vote"
+schedule = "0 */4 * * *"
+command = "node jobs/council-perplexity-vote.js"
+description = "4H Divine Council pre-vote intel: 9 agents query Perplexity API before formal votes"
+enabled = true
+
+[[crons]]
+name = "plotra-paint-cron"
+schedule = "0 0 * * *"
+command = "node jobs/plotra-paint.js"
+description = "Daily 24hr paint cycle for Plotra canvas agents (Heimdall/Odin/Freya)"
+enabled = true
+
+[[crons]]
+name = "plotra-registration-run"
+schedule = "0 */6 * * *"
+command = "node jobs/plotra-registration-run.js"
+description = "6H: seed deity wallets, register arena_deities + swarm_ys_agents, tag Immunefi cohort"
+enabled = true
+
+[[crons]]
+name = "plotra-faucet-drip"
+schedule = "0 * * * *"
+command = "node jobs/plotra-faucet-drip.js"
+description = "Hourly: drip sepETH to registered Plotra agents with low wallet balances"
+enabled = true
+
+[[crons]]
+name = "swarm-ys-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/swarm-ys-heartbeat.js"
+description = "420s heartbeat for 1,516 SwarmOS sub-agents + marketplace snapshot"
+enabled = true
+
+[[crons]]
+name = "ramp-onramp-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/ramp-onramp-sync.js"
+description = "Ramp Network webhook processing + UTM attribution tracking"
+enabled = true
+
+[[crons]]
+name = "trading-com-email-fetcher"
+schedule = "*/5 * * * *"
+command = "node jobs/trading-com-email-fetcher.js"
+description = "5-min cron: Polsia inbox poll for MT5 data → Trading.com CRM pipeline"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# COUNCIL ENGINE PROTOCOL + BLUE FORGE MINING
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "blueforge-mining-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/blueforge-sync.js"
+description = "15-min Blue Forge sync: 22 Z15 Pro → 2miners API → Wise ZEC→fiat (Phase 1 portal locked until ~Jun 7)"
+enabled = true
+
+[[crons]]
+name = "zec-pool-poller"
+schedule = "*/5 * * * *"
+command = "node jobs/zec-pool-poller.js"
+description = "5-min ZEC pool poll: fetch 2miners stats → upsert units → revenue snapshot → offline alerts → Slack/Discord/email"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# ELISAZOS COUNCIL SYNC + 20-SHARD HARVEST CYCLES → SWARMOS ASSEMBLY
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "elisazos-harvest-cycle"
+schedule = "0 */4 * * *"
+command = "node jobs/elisazos-harvest-cycle.js"
+description = "⟨ELISAZOS⟩ 4h: Council sync → 20-shard harvest (ETH/ETC/ZEC/KAS/FLUX) → SwarmOS assembly → ElisazOS confirm. Guard: POLISIA_IN_PROCESS_CRONS_ENABLED"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# AWS GPU MINING — HELIX CHAIN 2.2
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "aws-gpu-miner-monitor"
+schedule = "*/15 * * * *"
+command = "node jobs/cron-aws-gpu-miner.js"
+description = "15-min AWS GPU miner fleet monitor: poll miner API on port 4067 + EC2 state + revenue estimate + alert on downtime. Guarded by POLSIA_IN_PROCESS_CRONS_ENABLED."
+enabled = true
+
+[[crons]]
+name = "azure-kaspa-gpu-monitor"
+schedule = "*/15 * * * *"
+command = "node jobs/cron-azure-kaspa-gpu.js"
+description = "15-min Kaspa KHeavyHash stats pull from Azure Vega 10 GPU miner API on port 4068. Guarded by POLSIA_IN_PROCESS_CRONS_ENABLED."
+enabled = true
+
+[[crons]]
+name = "check-lp-fees"
+schedule = "0 8 * * *"
+command = "node jobs/check-lp-fees.js"
+description = "Daily 08:00 UTC: scan wallet 7cderjyH4N56 for Raydium collectCpFees → log new claims to lp_claims → Slack/email Christopher"
+enabled = true
+
+[[crons]]
+name = "task-digest"
+schedule = "0 9 * * *"
+command = "node jobs/task-digest.js"
+description = "Daily 09:00 UTC: aggregate recurring task completions from last 24h → email digest to cbrown03777@gmail.com"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# HELIX INFRASTRUCTURE MEGA DEPLOY — 6 core crons (Task #2112734)
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "atomic-pulse"
+schedule = "*/3 * * * *"
+command = "node jobs/atomic-pulse.js"
+description = "⟨YSRL::ATOMIC_PULSE⟩ 1h33m cycle: tick every 3min, full market scan at tick 31. §P CO Springs pipeline (leads/revenue/agents/Paine anchor). §9 memory guard + lock + watchdog. KAIROS CONDUCTOR feeds."
+enabled = true
+
+[[crons]]
+name = "apy-recalc"
+schedule = "0 */6 * * *"
+command = "node jobs/apy-recalc.js"
+description = "⟨HELIX::APY_RECALC⟩ 6-hour vault APY recalculation: SOL/ETH/BTC/TON/TAO/ZEC/EXL/USDC"
+enabled = true
+
+[[crons]]
+name = "agent-heartbeat"
+schedule = "*/7 * * * *"
+command = "node jobs/agent-heartbeat.js"
+description = "420s heartbeat for SwarmOS agents + marketplace snapshot"
+enabled = true
+
+[[crons]]
+name = "revenue-snapshot"
+schedule = "0 0 * * *"
+command = "node jobs/revenue-snapshot.js"
+description = "⟨HELIX::REVENUE_SNAPSHOT⟩ Midnight daily revenue snapshot across all chains"
+enabled = true
+
+[[crons]]
+name = "bridge-sync"
+schedule = "*/15 * * * *"
+command = "node jobs/bridge-sync.js"
+description = "⟨HELIX::BRIDGE_SYNC⟩ 15-min HELIX bridge state machine: pending→relayed→confirmed→completed"
+enabled = true
+
+[[crons]]
+name = "mining-health-check"
+schedule = "*/30 * * * *"
+command = "node jobs/mining-health-check.js"
+description = "⟨HELIX::MINING_HEALTH_CHECK⟩ 30-min health check: 22 Z15 Pro Blue Forge + solo miners + DeFi pools"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# BOUNTY HUNTER SCOUT — Immunefi Solana Sweep
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "bounty-scout"
+schedule = "0 8 * * *"
+command = "node jobs/bounty-scout.js"
+description = "Daily 08:00 UTC: Immunefi Solana sweep — scrape 7 pre-loaded targets, flag NEW/UPDATED, emit ElizaOS events, dispatch full swarm for ≥$100K"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# GOLDAPI PURITY RANKING — Agent Metal Skin Tiers (24K/18K/14K/10K/Bronze)
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "gold-price-fetch"
+schedule = "*/15 * * * *"
+command = "node jobs/gold-price-fetch.js"
+description = "Fetch live XAU/USD from GoldAPI, cache in DB, trigger purity ranking on schedule"
+enabled = true
+
+[[crons]]
+name = "agent-purity-ranking"
+schedule = "0 */4 * * *"
+command = "node jobs/metal-tier-ranking.js"
+description = "Score 521+ agents across TAO/SOL/task/uptime metrics → assign metal tiers → upsert agent_metal_skins"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# ORACLE PRICE FEED — 3-Network GEOD (mainnet/devnet/testnet)
+# Kraken WS (SOL/ETH/BTC/ZEC) + CoinGecko (MONAD/BASE/SUI/POLYGON/HYPE)
+# Powers: KAIROS CONDUCTOR, vault yield calc, GEOD toast bar
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "oracle-mainnet-prices"
+schedule = "*/30 * * * *"
+command = "node jobs/oracle-mainnet-prices.js"
+description = "🟢 Oracle mainnet: Kraken WS primary (SOL/ETH/BTC/ZEC) + CoinGecko backup, 30s tick, writes oracle_price_history env=mainnet"
+enabled = true
+
+[[crons]]
+name = "oracle-devnet-prices"
+schedule = "*/60 * * * *"
+command = "node jobs/oracle-devnet-prices.js"
+description = "🔵 Oracle devnet: CoinGecko primary (MONAD/BASE/SUI/POLYGON/HYPE), 60s tick, writes oracle_price_history env=devnet"
+enabled = true
+
+[[crons]]
+name = "oracle-testnet-prices"
+schedule = "*/120 * * * *"
+command = "node jobs/oracle-testnet-prices.js"
+description = "🟡 Oracle testnet: CoinGecko + Helius devnet/Sepolia, 120s tick, writes oracle_price_history env=testnet"
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# DATABASE BACKUP SYSTEM — Point-in-Time Recovery + Cross-Region Replication
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "db-backup-v2"
+schedule = "0 */6 * * *"
+command = "node jobs/cron-db-backup-v2.js"
+description = "Full pg_dump → Azure Blob + OVH Object Storage + local /backups/, every 6h. Integrity via pg_restore --dry-run."
+enabled = true
+
+[[crons]]
+name = "db-replica-sync"
+schedule = "*/5 * * * *"
+command = "node jobs/cron-replica-sync.js"
+description = "Cross-region replica health: lag measurement, >5s alert, Discord warning. DATABASE_REPLICA_URL required."
+enabled = true
+
+[[crons]]
+name = "db-prune"
+schedule = "0 3 * * *"
+command = "node jobs/cron-db-prune.js"
+description = "Daily 03:00 UTC: prune db_backups >90 days + local /backups/ files older than 90 days."
+enabled = true
+
+# ═══════════════════════════════════════════════════════════════════
+# SALES PIPELINE REPORTS — Daily Sales Intelligence
+# ═══════════════════════════════════════════════════════════════════
+
+[[crons]]
+name = "daily-sales-report"
+schedule = "0 6 * * *"
+command = "node jobs/daily-sales-report.js"
+description = "Daily 06:00 UTC: sales pipeline report — pipeline snapshot, movement, activity, top deals, at-risk, forecast. Email to yieldswarm@polsia.app + DB save."
+enabled = true
+
+[[crons]]
+name = "lead-nurture-automation"
+schedule = "0 * * * *"
+command = "node jobs/cron-nurture-trigger.js"
+description = "Hourly: seed sequences, dispatch due nurture emails (max 50/hr), auto-enroll inactive leads (per pipeline trigger config), fire re-engagement candidates (30d+ inactive), midnight analytics snapshot. Guarded by POLSIA_IN_PROCESS_CRONS_ENABLED."
+enabled = true

@@ -1,0 +1,18 @@
+# YieldSwarm Workers Docker image
+# Runs cron jobs from jobs/ + services/ without HTTP server.
+# No secrets baked in — POLSIA_IN_PROCESS_CRONS_ENABLED triggers worker mode.
+
+FROM node:20-alpine
+
+RUN apk add --no-cache wget
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+RUN npm ci --production
+
+COPY . .
+
+# Worker entry — runs crons without Express HTTP server.
+# The worker-start.js script handles all service phases.
+CMD ["node", "--max-old-space-size=460", "scripts/worker-start.js"]
