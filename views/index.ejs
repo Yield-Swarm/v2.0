@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'YieldSwarm' %></title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#07080c;color:#c8d3f5;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
+    .container{max-width:1200px;margin:0 auto;padding:2rem}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .logo{color:#00ff88;font-weight:800;font-size:1.1rem;letter-spacing:0.05em}
+    nav a{color:#8a8ea6;text-decoration:none;margin-left:1.5rem;font-size:0.9rem;transition:color .15s}
+    nav a:hover{color:#00ff88}
+    .hero{text-align:center;padding:4rem 2rem}
+    .hero h1{font-size:2.5rem;color:#eceef5;margin-bottom:1rem}
+    .hero p{color:#8a8ea6;font-size:1.1rem;max-width:600px;margin:0 auto 2rem}
+    .btn{display:inline-block;background:#00ff88;color:#07080c;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700;transition:opacity .15s}
+    .btn:hover{opacity:.85}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+    .card{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:1.5rem}
+    .card h3{color:#00ff88;margin-bottom:.5rem;font-size:1rem}
+    .card p{color:#8a8ea6;font-size:.9rem;line-height:1.5}
+    .stat{color:#ffd700;font-size:1.5rem;font-weight:700}
+    footer{text-align:center;padding:2rem;color:#4a4e6a;font-size:.8rem;border-top:1px solid rgba(255,255,255,0.05);margin-top:2rem}
+    .badge{display:inline-block;background:rgba(0,255,136,0.1);color:#00ff88;padding:.25rem .75rem;border-radius:4px;font-size:.75rem;font-weight:600;margin-left:.5rem}
+    .tag{display:inline-block;background:rgba(255,215,0,0.1);color:#ffd700;padding:.2rem .5rem;border-radius:4px;font-size:.75rem;margin-right:.5rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><span style="color:#ffd700">⚡</span> YIELDSWARM</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/yield">Yield</a>
+      <a href="/vaults">Vaults</a>
+      <a href="/mining">Mining</a>
+      <a href="/agents">Agents</a>
+      <a href="/depin">DePIN</a>
+      <a href="/admin">Admin</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Autonomous Yield Infrastructure</h1>
+    <p>DeFi yield optimization across Solana, TON, Ethereum, Bitcoin, and TAO vaults. Powered by AI agents.</p>
+    <a href="/yield" class="btn">Explore Vaults →</a>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h3>🔒 Vault Suite</h3>
+        <p class="stat">32.3% <span class="badge">APY</span></p>
+        <p>6 vaults across SOL, TON, ETH, BTC, EXL, TAO. Automated yield harvesting every 15 minutes.</p>
+      </div>
+      <div class="card">
+        <h3>⛏ Mining Operations</h3>
+        <p class="stat">22 <span class="badge">Z15 Pro</span></p>
+        <p>Real hardware mining. $25.2K monthly revenue. Blue Forge integration coming.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 Agent Swarm</h3>
+        <p class="stat">8,541 <span class="badge">Agents</span></p>
+        <p>AI agents running on council governance. 9 LLM weighted voting system.</p>
+      </div>
+      <div class="card">
+        <h3>🌐 DePIN Network</h3>
+        <p class="stat">7 <span class="badge">Providers</span></p>
+        <p>Azure, GCP, AWS, Akash, OVH, Nebius, Render. Multi-cloud redundancy.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>YieldSwarm v2.0 · DeFi & DePIN Infrastructure · 2026</footer>
+</body>
+</html>

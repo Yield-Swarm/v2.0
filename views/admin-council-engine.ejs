@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title || 'Council Engine' %></title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#07080c;color:#c8d3f5;font-family:system-ui,sans-serif;min-height:100vh}
+    .container{max-width:1200px;margin:0 auto;padding:2rem}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .logo{color:#00ff88;font-weight:800}
+    nav a{color:#8a8ea6;text-decoration:none;margin-left:1.5rem;font-size:0.9rem}
+    nav a:hover{color:#00ff88}
+    .llm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+    .llm-card{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:1rem}
+    .llm-card h4{color:#00d4ff;margin-bottom:.5rem}
+    .llm-card .weight{color:#ffd700;font-size:.8rem}
+    .vote-bar{height:4px;background:#1a2540;border-radius:2px;margin-top:.5rem;overflow:hidden}
+    .vote-bar .fill{height:100%;background:#00ff88;width:0%;transition:width .3s}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">⚡ Council Engine</div>
+    <nav>
+      <a href="/admin">Dashboard</a>
+      <a href="/admin/council-engine">Council</a>
+      <a href="/admin/wise-integration">Wise</a>
+      <a href="/admin/blueforge-mining">Mining</a>
+      <a href="/admin/analytics">Analytics</a>
+      <a href="/admin/settings">Settings</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2 style="color:#eceef5;margin-bottom:1rem">9-LLM Weighted Voting Council</h2>
+    <p style="color:#8a8ea6;margin-bottom:1rem">Threshold: 8/15 votes required for approval. Odin has hard veto.</p>
+    <div class="llm-grid">
+      <div class="llm-card"><h4>ODIN</h4><div class="weight">Weight 3 ⚡ HARD VETO</div><div class="vote-bar"><div class="fill" style="width:100%"></div></div></div>
+      <div class="llm-card"><h4>THOR</h4><div class="weight">Weight 2</div><div class="vote-bar"><div class="fill" style="width:66%"></div></div></div>
+      <div class="llm-card"><h4>FREYA</h4><div class="weight">Weight 2</div><div class="vote-bar"><div class="fill" style="width:66%"></div></div></div>
+      <div class="llm-card"><h4>HEIMDALL</h4><div class="weight">Weight 2</div><div class="vote-bar"><div class="fill" style="width:66%"></div></div></div>
+      <div class="llm-card"><h4>WHITE HAT</h4><div class="weight">Weight 2</div><div class="vote-bar"><div class="fill" style="width:66%"></div></div></div>
+      <div class="llm-card"><h4>LOKI</h4><div class="weight">Weight 1</div><div class="vote-bar"><div class="fill" style="width:33%"></div></div></div>
+      <div class="llm-card"><h4>PERPLEXITY</h4><div class="weight">Weight 1</div><div class="vote-bar"><div class="fill" style="width:33%"></div></div></div>
+      <div class="llm-card"><h4>CYBERSECURITY</h4><div class="weight">Weight 1</div><div class="vote-bar"><div class="fill" style="width:33%"></div></div></div>
+      <div class="llm-card"><h4>BIFRÖST</h4><div class="weight">Weight 1</div><div class="vote-bar"><div class="fill" style="width:33%"></div></div></div>
+    </div>
+  </div>
+</body>
+</html>

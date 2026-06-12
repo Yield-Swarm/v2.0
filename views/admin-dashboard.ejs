@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'Admin' %></title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#07080c;color:#c8d3f5;font-family:system-ui,-apple-system,sans-serif;min-height:100vh}
+    .container{max-width:1400px;margin:0 auto;padding:2rem}
+    header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .logo{color:#00ff88;font-weight:800;font-size:1.1rem}
+    nav a{color:#8a8ea6;text-decoration:none;margin-left:1.5rem;font-size:0.9rem;transition:color .15s}
+    nav a:hover{color:#00ff88}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+    .card{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:1.5rem}
+    .card h3{color:#00ff88;margin-bottom:1rem;font-size:1rem}
+    .stat{color:#ffd700;font-size:2rem;font-weight:700}
+    .label{color:#8a8ea6;font-size:.8rem;margin-top:.25rem}
+    .btn{display:inline-block;background:#00ff88;color:#07080c;padding:.5rem 1rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.85rem;margin-top:.5rem}
+    .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.5rem}
+    .online{background:#00ff88}.offline{background:#ff4444}.warn{background:#ffd700}
+    table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.85rem}
+    th,td{text-align:left;padding:.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+    th{color:#8a8ea6;font-weight:500}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🛡 YieldSwarm Admin</div>
+    <nav>
+      <a href="/admin">Dashboard</a>
+      <a href="/admin/council-engine">Council</a>
+      <a href="/admin/wise-integration">Wise</a>
+      <a href="/admin/blueforge-mining">Mining</a>
+      <a href="/admin/analytics">Analytics</a>
+      <a href="/admin/settings">Settings</a>
+      <a href="/">Exit</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2 style="color:#eceef5;margin-bottom:1rem">Admin Dashboard</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>System Health</h3>
+        <div class="stat"><span class="status-dot online"></span>OK</div>
+        <div class="label">All services operational</div>
+      </div>
+      <div class="card">
+        <h3>Vault Yield (24h)</h3>
+        <div class="stat">$0.00</div>
+        <div class="label">6 vaults active</div>
+      </div>
+      <div class="card">
+        <h3>Active Agents</h3>
+        <div class="stat">8,541</div>
+        <div class="label">Swarm online</div>
+      </div>
+      <div class="card">
+        <h3>Mining Hashrate</h3>
+        <div class="stat">1.2 GH/s</div>
+        <div class="label">22 Z15 Pro miners</div>
+      </div>
+      <div class="card">
+        <h3>Cloud Cost</h3>
+        <div class="stat">$1,007</div>
+        <div class="label">Monthly across 7 providers</div>
+      </div>
+      <div class="card">
+        <h3>Council Reviews</h3>
+        <div class="stat">0</div>
+        <div class="label">Pending votes</div>
+      </div>
+    </div>
+
+    <h3 style="color:#eceef5;margin-top:2rem">Infrastructure Status</h3>
+    <table>
+      <tr><th>Provider</th><th>Region</th><th>Service</th><th>Status</th></tr>
+      <tr><td>Azure</td><td>East US</td><td>Primary VM</td><td><span class="status-dot online"></span>Active</td></tr>
+      <tr><td>GCP</td><td>us-central1</td><td>Cloud SQL</td><td><span class="status-dot online"></span>Active</td></tr>
+      <tr><td>AWS</td><td>us-east-1</td><td>SageMaker</td><td><span class="status-dot warn"></span>Standby</td></tr>
+      <tr><td>Akash</td><td>Chain 8</td><td>GPU Compute</td><td><span class="status-dot online"></span>Active</td></tr>
+      <tr><td>OVH</td><td>Gravelines</td><td>Backup VM</td><td><span class="status-dot online"></span>Active</td></tr>
+    </table>
+  </div>
+</body>
+</html>

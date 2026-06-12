@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title><%= title || 'Mining' %></title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#07080c;color:#c8d3f5;font-family:system-ui,sans-serif;min-height:100vh}
+  .container{max-width:1200px;margin:0 auto;padding:2rem}
+  header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .logo{color:#00ff88;font-weight:800}
+  nav a{color:#8a8ea6;text-decoration:none;margin-left:1.5rem;font-size:0.9rem}
+  nav a:hover{color:#00ff88}
+  .card{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:1.5rem;margin-top:1rem}
+  .card h3{color:#00ff88;margin-bottom:1rem}
+</style>
+</head>
+<body>
+  <header><div class="logo">⛏ Mining</div>
+    <nav><a href="/">Home</a><a href="/yield">Yield</a><a href="/vaults">Vaults</a><a href="/mining">Mining</a><a href="/agents">Agents</a><a href="/depin">DePIN</a></nav>
+  </header>
+  <div class="container">
+    <h2 style="color:#eceef5;margin-bottom:1rem">Mining Operations</h2>
+    <div class="card"><h3>Z15 Pro Fleet</h3><p style="color:#8a8ea6">22 miners · 1.2 GH/s</p></div>
+    <div class="card"><h3>Blue Forge</h3><p style="color:#8a8ea6">Coming online</p></div>
+  </div>
+</body>
+</html>

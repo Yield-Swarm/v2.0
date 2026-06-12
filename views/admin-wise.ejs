@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title><%= title || 'Wise' %></title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#07080c;color:#c8d3f5;font-family:system-ui,sans-serif;min-height:100vh}
+  .container{max-width:1200px;margin:0 auto;padding:2rem}
+  header{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+  .logo{color:#00ff88;font-weight:800}
+  nav a{color:#8a8ea6;text-decoration:none;margin-left:1.5rem;font-size:0.9rem}
+  nav a:hover{color:#00ff88}
+  .card{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:1.5rem;margin-top:1rem}
+  .card h3{color:#00ff88;margin-bottom:1rem}
+  .btn{display:inline-block;background:#00ff88;color:#07080c;padding:.5rem 1rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.85rem;margin-top:.5rem}
+</style>
+</head>
+<body>
+  <header><div class="logo">💱 Wise Integration</div>
+    <nav><a href="/admin">Dashboard</a><a href="/admin/council-engine">Council</a><a href="/admin/wise-integration">Wise</a><a href="/admin/blueforge-mining">Mining</a><a href="/admin/analytics">Analytics</a><a href="/admin/settings">Settings</a></nav>
+  </header>
+  <div class="container">
+    <h2 style="color:#eceef5;margin-bottom:1rem">Wise Payment Rails</h2>
+    <div class="card">
+      <h3>Account Balance</h3>
+      <p style="color:#ffd700;font-size:2rem;font-weight:700">$0.00 USD</p>
+      <p style="color:#8a8ea6;margin-top:.5rem">Sandbox mode — set WISE_API_KEY for production</p>
+      <a href="/api/wise-integration/balance" class="btn">Refresh Balance</a>
+    </div>
+    <div class="card">
+      <h3>ZEC Converter</h3>
+      <p style="color:#8a8ea6">1 ZEC ≈ $25.50 USD</p>
+      <a href="/api/wise-integration/zec-convert" class="btn">Check Rate</a>
+    </div>
+  </div>
+</body>
+</html>

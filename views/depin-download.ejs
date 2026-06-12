@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title || 'Download' %></title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#07080c;color:#c8d3f5;font-family:system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
+    .box{background:#0d0e14;border:1px solid rgba(255,255,255,0.05);border-radius:16px;padding:3rem;max-width:500px;width:100%;text-align:center}
+    .box h1{color:#00ff88;margin-bottom:1rem}
+    .box p{color:#8a8ea6;margin-bottom:2rem}
+    .btn{display:inline-block;background:#00ff88;color:#07080c;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>YieldSwarm Node Controller</h1>
+    <p>Download the desktop DePIN node controller for Windows.</p>
+    <a href="<%= installerUrl || '#' %>" class="btn">Download .exe</a>
+  </div>
+</body>
+</html>
