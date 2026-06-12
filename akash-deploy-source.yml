@@ -1,0 +1,97 @@
+version: "2.0"
+
+services:
+  yieldswarm:
+    image: node:20-alpine
+    command:
+      - sh
+      - -c
+      - |
+        apk add --no-cache git
+        cd /tmp
+        git clone https://x-access-token:${GITHUB_TOKEN}@github.com/Yield-Swarm/v2.0.git app
+        cd app
+        npm install --production --no-audit --no-fund
+        node --max-old-space-size=460 server.js
+    expose:
+      - port: 3000
+        as: 80
+        to:
+          - global: true
+        accept:
+          - defiswarmagents.com
+          - defiswarmagents.info
+    env:
+      - NODE_ENV=production
+      - PORT=3000
+      - POLSIA_IN_PROCESS_CRONS_ENABLED=false
+      - SOCKET_IO_ENABLED=true
+      - UD_WIRE_BOOT=true
+      - APP_URL=https://defiswarmagents.com
+      - DATABASE_URL=postgresql://yieldswarm:changeme_in_secrets@db:5432/yieldswarm
+      - ADMIN_SECRET=changeme_in_secrets
+      - ADMIN_ACCESS_TOKEN=changeme_in_secrets
+      - GITHUB_TOKEN=YOUR_GITHUB_TOKEN_HERE
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    expose:
+      - port: 5432
+        to:
+          - service: yieldswarm
+    env:
+      - POSTGRES_USER=yieldswarm
+      - POSTGRES_PASSWORD=changeme_in_secrets
+      - POSTGRES_DB=yieldswarm
+    params:
+      storage:
+        data:
+          mount: /var/lib/postgresql/data
+          readOnly: false
+
+profiles:
+  compute:
+    yieldswarm:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 2Gi
+        storage:
+          - size: 20Gi
+    db:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 1Gi
+        storage:
+          - size: 20Gi
+          - name: data
+            size: 20Gi
+            attributes:
+              persistent: true
+              class: default
+  placement:
+    dcloud:
+      attributes:
+        host: akash
+      pricing:
+        yieldswarm:
+          denom: uakt
+          amount: 10000
+        db:
+          denom: uakt
+          amount: 5000
+
+deployment:
+  yieldswarm:
+    dcloud:
+      profile: yieldswarm
+      count: 1
+  db:
+    dcloud:
+      profile: db
+      count: 1
