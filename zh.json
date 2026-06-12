@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "首页",
+    "fleet": "舰队",
+    "swarm": "蜂群",
+    "treasury": "国库",
+    "aiStack": "AI 栈",
+    "arena": "竞技场",
+    "play": "游戏",
+    "invest": "投资",
+    "shop": "商店",
+    "blog": "博客",
+    "buyMiner": "购买矿机"
+  },
+  "hero": {
+    "headline": "DePIN 原生收益智能",
+    "sub": "自主 AI 代理优化硬件集群、隐私挖矿和跨链 DeFi 的收益。",
+    "cta": "加入蜂群",
+    "ctaSecondary": "查看实时收益"
+  },
+  "stats": {
+    "nodes": "活跃节点",
+    "yield": "月收益",
+    "uptime": "正常运行时间 SLA",
+    "funded": "已融资"
+  },
+  "footer": {
+    "tagline": "面向去中心化经济的自主收益基础设施。",
+    "links": "链接",
+    "legal": "法律信息",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "risk": "风险披露"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出现了问题。",
+    "back": "返回",
+    "submit": "提交",
+    "cancel": "取消",
+    "save": "保存",
+    "learnMore": "了解更多",
+    "getStarted": "开始使用",
+    "viewAll": "查看全部",
+    "close": "关闭"
+  },
+  "invest": {
+    "headline": "投资蜂群",
+    "sub": "从 DePIN 硬件和自主 AI 优化挖矿操作中赚取收益。",
+    "cta": "开始投资",
+    "minInvestment": "最低投资额",
+    "expectedYield": "预期年收益率",
+    "lockupPeriod": "锁定期"
+  },
+  "shop": {
+    "headline": "拥有硬件",
+    "sub": "购买经过验证的挖矿设备，立即开始赚取收益。",
+    "cta": "立即购买",
+    "price": "价格",
+    "availability": "库存状况",
+    "unitsLeft": "台剩余",
+    "addToCart": "立即购买",
+    "breakEven": "盈亏平衡点"
+  },
+  "blog": {
+    "headline": "情报报告",
+    "sub": "AI 委员会研究、DePIN 分析和收益优化洞察。",
+    "readMore": "阅读更多",
+    "publishedOn": "发布于",
+    "by": "作者"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — DePIN 收益优化与自主挖矿协议",
+      "description": "自主 AI 代理优化 DePIN 硬件集群、Zcash 挖矿和跨链 DeFi 的收益。"
+    },
+    "invest": {
+      "title": "投资 DePIN 收益 — YieldSwarm",
+      "description": "从 DePIN 硬件和自主 AI 优化挖矿中赚取收益。加入 YieldSwarm 投资者池。"
+    },
+    "shop": {
+      "title": "购买挖矿设备 — YieldSwarm 商店",
+      "description": "购买经过验证的 Antminer Z15 Pro，立即开始赚取 Zcash 收益。数量有限。"
+    },
+    "blog": {
+      "title": "DePIN 情报报告 — YieldSwarm 博客",
+      "description": "YieldSwarm 团队的 AI 委员会研究、DePIN 分析和收益优化洞察。"
+    }
+  },
+  "bounties": {
+    "title": "铸造厂任务",
+    "subtitle": "从顶级DeFi组织领取赏金。完成任务，赚取加密货币 + $YIELD代币。",
+    "heroStat1": "开放赏金",
+    "heroStat2": "总价值",
+    "heroStat3": "已支付",
+    "filterAll": "所有来源",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "直接",
+    "difficulty": "难度",
+    "reward": "奖励",
+    "claimQuest": "领取任务",
+    "submitSolution": "提交解决方案",
+    "hotQuests": "🔥 热门任务",
+    "featured": "⭐ 精选",
+    "leaderboard": "代理排行榜",
+    "deadline": "截止日期",
+    "claimed": "已领取",
+    "paid": "已支付",
+    "tokenBonus": "$YIELD奖励",
+    "stakeRequired": "领取需要5%质押"
+  }
+}

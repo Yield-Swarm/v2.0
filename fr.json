@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "fleet": "Flotte",
+    "swarm": "Essaim",
+    "treasury": "Trésorerie",
+    "aiStack": "Pile IA",
+    "arena": "Arène",
+    "play": "Jouer",
+    "invest": "Investir",
+    "shop": "Boutique",
+    "blog": "Blog",
+    "buyMiner": "Acheter un Mineur"
+  },
+  "hero": {
+    "headline": "Intelligence de Rendement DePIN Native",
+    "sub": "Des agents IA autonomes optimisent les rendements sur les flottes matérielles, le minage de confidentialité et la DeFi cross-chain.",
+    "cta": "Rejoindre l'Essaim",
+    "ctaSecondary": "Voir le Rendement en Direct"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite.",
+    "back": "Retour",
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "learnMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "viewAll": "Tout voir",
+    "close": "Fermer"
+  },
+  "shop": {
+    "cta": "Acheter Maintenant",
+    "unitsLeft": "unités restantes",
+    "addToCart": "Acheter Maintenant"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — Optimisation du Rendement DePIN & Protocole de Minage Autonome",
+      "description": "Des agents IA autonomes optimisent les rendements sur les flottes matérielles DePIN, le minage Zcash et la DeFi cross-chain."
+    }
+  },
+  "bounties": {
+    "title": "Quêtes de la Forge",
+    "subtitle": "Réclamez des primes des meilleures organisations DeFi. Résolvez des quêtes, gagnez de la crypto + des tokens $YIELD.",
+    "heroStat1": "Primes Ouvertes",
+    "heroStat2": "Valeur Totale",
+    "heroStat3": "Payé",
+    "filterAll": "Toutes les Sources",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "Direct",
+    "difficulty": "Difficulté",
+    "reward": "Récompense",
+    "claimQuest": "Réclamer la Quête",
+    "submitSolution": "Soumettre la Solution",
+    "hotQuests": "🔥 Quêtes Populaires",
+    "featured": "⭐ À la Une",
+    "leaderboard": "Classement des Agents",
+    "deadline": "Date Limite",
+    "claimed": "Réclamé",
+    "paid": "Payé",
+    "tokenBonus": "Bonus $YIELD",
+    "stakeRequired": "Mise de 5% requise pour réclamer"
+  }
+}

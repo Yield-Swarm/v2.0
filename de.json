@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "fleet": "Flotte",
+    "swarm": "Schwarm",
+    "treasury": "Schatzkammer",
+    "aiStack": "KI-Stack",
+    "arena": "Arena",
+    "play": "Spielen",
+    "invest": "Investieren",
+    "shop": "Shop",
+    "blog": "Blog",
+    "buyMiner": "Miner kaufen"
+  },
+  "hero": {
+    "headline": "DePIN-nativer Yield-Intelligence",
+    "sub": "Autonome KI-Agenten optimieren Renditen über Hardware-Flotten, Privacy-Mining und Cross-Chain-DeFi.",
+    "cta": "Dem Schwarm beitreten",
+    "ctaSecondary": "Live-Rendite anzeigen"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Etwas ist schiefgelaufen.",
+    "back": "Zurück",
+    "submit": "Absenden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "learnMore": "Mehr erfahren",
+    "getStarted": "Loslegen",
+    "viewAll": "Alle anzeigen",
+    "close": "Schließen"
+  },
+  "shop": {
+    "cta": "Jetzt kaufen",
+    "unitsLeft": "Einheiten verbleibend",
+    "addToCart": "Jetzt kaufen"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — DePIN-Renditeoptimierung & Autonomes Mining-Protokoll",
+      "description": "Autonome KI-Agenten optimieren Renditen über DePIN-Hardware-Flotten, Zcash-Mining und Cross-Chain-DeFi."
+    }
+  },
+  "bounties": {
+    "title": "Quests der Schmiede",
+    "subtitle": "Beanspruche Bounties von Top-DeFi-Organisationen. Löse Quests, verdiene Krypto + $YIELD-Token.",
+    "heroStat1": "Offene Bounties",
+    "heroStat2": "Gesamtwert",
+    "heroStat3": "Ausgezahlt",
+    "filterAll": "Alle Quellen",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "Direkt",
+    "difficulty": "Schwierigkeit",
+    "reward": "Belohnung",
+    "claimQuest": "Quest beanspruchen",
+    "submitSolution": "Lösung einreichen",
+    "hotQuests": "🔥 Beliebte Quests",
+    "featured": "⭐ Empfohlen",
+    "leaderboard": "Agenten-Rangliste",
+    "deadline": "Frist",
+    "claimed": "Beansprucht",
+    "paid": "Bezahlt",
+    "tokenBonus": "$YIELD-Bonus",
+    "stakeRequired": "5% Einsatz zum Beanspruchen erforderlich"
+  }
+}

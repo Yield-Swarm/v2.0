@@ -1,0 +1,172 @@
+{
+  "nav": {
+    "home": "Home",
+    "fleet": "Fleet",
+    "swarm": "Swarm",
+    "treasury": "Treasury",
+    "aiStack": "AI Stack",
+    "arena": "Arena",
+    "play": "Play",
+    "invest": "Invest",
+    "shop": "Shop",
+    "blog": "Blog",
+    "buyMiner": "Buy a Miner"
+  },
+  "hero": {
+    "headline": "DePIN-Native Yield Intelligence",
+    "sub": "Autonomous AI agents optimizing yield across hardware fleets, privacy mining, and cross-chain DeFi.",
+    "cta": "Join the Swarm",
+    "ctaSecondary": "View Live Yield"
+  },
+  "stats": {
+    "nodes": "Active Nodes",
+    "yield": "Monthly Yield",
+    "uptime": "Uptime SLA",
+    "funded": "Funded"
+  },
+  "footer": {
+    "tagline": "Autonomous yield infrastructure for the decentralized economy.",
+    "links": "Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "risk": "Risk Disclosure"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong.",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "viewAll": "View all",
+    "close": "Close"
+  },
+  "invest": {
+    "headline": "Invest in the Swarm",
+    "sub": "Earn yield from DePIN hardware and autonomous AI-optimized mining operations.",
+    "cta": "Start Investing",
+    "minInvestment": "Minimum Investment",
+    "expectedYield": "Expected Annual Yield",
+    "lockupPeriod": "Lockup Period"
+  },
+  "shop": {
+    "headline": "Own the Hardware",
+    "sub": "Purchase a verified mining unit and start earning immediately.",
+    "cta": "Shop Now",
+    "price": "Price",
+    "availability": "Availability",
+    "unitsLeft": "units left",
+    "addToCart": "Buy Now",
+    "breakEven": "Break-even"
+  },
+  "blog": {
+    "headline": "Intelligence Reports",
+    "sub": "AI council research, DePIN analysis, and yield optimization insights.",
+    "readMore": "Read more",
+    "publishedOn": "Published on",
+    "by": "by"
+  },
+  "partnerships": {
+    "bittensor": {
+      "meta": {
+        "title": "YieldSwarm × Bittensor: Hardware Meets Intelligence",
+        "description": "YieldSwarm deploys as a Bittensor validator. 22 Z15 Pro miners, 13 autonomous AI agents, 60/40 revenue share. Testnet May 28. Mainnet June 4."
+      },
+      "hero": {
+        "eyebrow": "Bittensor Validator Partnership",
+        "titleLine2": "Hardware Meets Intelligence",
+        "taglineSuffix": "Infinite Intelligence",
+        "ctaDeploy": "Deploy with us",
+        "ctaProposal": "Read full proposal"
+      },
+      "pillars": {
+        "label": "Why YieldSwarm",
+        "title": "Three reasons the network wins",
+        "sub": "Not hope-backed compute. Not a rented server. Hardware-owned, agent-driven, economically sustainable.",
+        "p1Title": "Reliability",
+        "p1Body": "22 Antminer Z15 Pro units at Blue Forge Advisors. $0.075/kWh contract-locked, 95% uptime SLA at the colocation level, 99.7% at the network layer. Hardware that shows up every block — not hope-backed.",
+        "p2Title": "Autonomy",
+        "p2Body": "13 AI agents orchestrate compute routing, stake optimization, and automated failover. Recovery time objective under 60 seconds. No human in the loop for routine operations — agents handle it.",
+        "p3Title": "Economics",
+        "p3Body": "60/40 revenue share — foundation receives 60%, YieldSwarm retains 40%. Agent-driven emission optimization projected to add $4K–$6K/month uplift over manual. Year 1 range: $80K–$328K."
+      },
+      "revenue": {
+        "label": "Revenue Model",
+        "title": "Sustainable validator economics"
+      },
+      "tech": {
+        "label": "Deployment Roadmap",
+        "title": "Three phases. Mainnet by June 4.",
+        "sub": "Every phase is verified before the next begins. No manual handoffs — agents handle the transitions."
+      },
+      "agents": {
+        "label": "The Swarm",
+        "title": "13 agents. No downtime. No manual ops.",
+        "sub": "Each agent owns a specific domain. Together they form an autonomous orchestration layer that runs the validator 24/7."
+      },
+      "metrics": {
+        "label": "Live Validator Stats",
+        "title": "Real-time performance",
+        "sub": "Stats populate when testnet goes live May 28. Until then — here's what the hardware delivers today."
+      },
+      "faq": {
+        "label": "Common Questions",
+        "title": "Answers before you ask"
+      },
+      "cta": {
+        "label": "Ready",
+        "title": "The gateway opens",
+        "sub": "Hardware-backed. Agent-driven. June 4 is the date. Join the validator before mainnet goes live.",
+        "ctaDeploy": "Deploy with us",
+        "ctaWaitlist": "Join waitlist",
+        "ctaMetrics": "Live metrics"
+      }
+    }
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — DePIN Yield Optimization & Autonomous Mining Protocol",
+      "description": "Autonomous AI agents optimize yield across DePIN hardware fleets, Zcash mining, and cross-chain DeFi. 7 miners live, $17.6K/month yield."
+    },
+    "invest": {
+      "title": "Invest in DePIN Yield — YieldSwarm",
+      "description": "Earn yield from DePIN hardware and autonomous AI-optimized mining. Join the YieldSwarm investor pool."
+    },
+    "shop": {
+      "title": "Buy a Mining Unit — YieldSwarm Shop",
+      "description": "Purchase a verified Antminer Z15 Pro and start earning Zcash yield immediately. Limited supply."
+    },
+    "blog": {
+      "title": "DePIN Intelligence Reports — YieldSwarm Blog",
+      "description": "AI council research, DePIN analysis, and yield optimization insights from the YieldSwarm team."
+    }
+  },
+  "bounties": {
+    "title": "Quests from the Forge",
+    "subtitle": "Claim bounties from top DeFi orgs. Solve quests, earn crypto + $YIELD tokens.",
+    "heroStat1": "Open Bounties",
+    "heroStat2": "Total Value",
+    "heroStat3": "Paid Out",
+    "filterAll": "All Sources",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "Direct",
+    "difficulty": "Difficulty",
+    "reward": "Reward",
+    "claimQuest": "Claim Quest",
+    "submitSolution": "Submit Solution",
+    "hotQuests": "🔥 Hot Quests",
+    "featured": "⭐ Featured",
+    "leaderboard": "Agent Leaderboard",
+    "deadline": "Deadline",
+    "claimed": "Claimed",
+    "paid": "Paid",
+    "tokenBonus": "$YIELD Bonus",
+    "stakeRequired": "5% stake required to claim"
+  }
+}

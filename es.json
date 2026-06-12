@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "fleet": "Flota",
+    "swarm": "Enjambre",
+    "treasury": "Tesorería",
+    "aiStack": "Pila IA",
+    "arena": "Arena",
+    "play": "Jugar",
+    "invest": "Invertir",
+    "shop": "Tienda",
+    "blog": "Blog",
+    "buyMiner": "Comprar Minero"
+  },
+  "hero": {
+    "headline": "Inteligencia de Rendimiento DePIN",
+    "sub": "Agentes de IA autónomos que optimizan el rendimiento en flotas de hardware, minería de privacidad y DeFi multicadena.",
+    "cta": "Únete al Enjambre",
+    "ctaSecondary": "Ver Rendimiento en Vivo"
+  },
+  "stats": {
+    "nodes": "Nodos Activos",
+    "yield": "Rendimiento Mensual",
+    "uptime": "SLA de Disponibilidad",
+    "funded": "Financiado"
+  },
+  "footer": {
+    "tagline": "Infraestructura de rendimiento autónomo para la economía descentralizada.",
+    "links": "Enlaces",
+    "legal": "Legal",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "risk": "Divulgación de Riesgos"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal.",
+    "back": "Volver",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "learnMore": "Saber más",
+    "getStarted": "Comenzar",
+    "viewAll": "Ver todo",
+    "close": "Cerrar"
+  },
+  "invest": {
+    "headline": "Invierte en el Enjambre",
+    "sub": "Gana rendimiento de hardware DePIN y operaciones de minería optimizadas por IA autónoma.",
+    "cta": "Comenzar a Invertir",
+    "minInvestment": "Inversión Mínima",
+    "expectedYield": "Rendimiento Anual Esperado",
+    "lockupPeriod": "Período de Bloqueo"
+  },
+  "shop": {
+    "headline": "Posee el Hardware",
+    "sub": "Compra una unidad de minería verificada y comienza a ganar de inmediato.",
+    "cta": "Comprar Ahora",
+    "price": "Precio",
+    "availability": "Disponibilidad",
+    "unitsLeft": "unidades restantes",
+    "addToCart": "Comprar Ahora",
+    "breakEven": "Punto de equilibrio"
+  },
+  "blog": {
+    "headline": "Informes de Inteligencia",
+    "sub": "Investigación del consejo de IA, análisis DePIN e información de optimización de rendimiento.",
+    "readMore": "Leer más",
+    "publishedOn": "Publicado el",
+    "by": "por"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — Optimización de Rendimiento DePIN y Protocolo de Minería Autónoma",
+      "description": "Agentes de IA autónomos optimizan el rendimiento en flotas de hardware DePIN, minería Zcash y DeFi multicadena."
+    },
+    "invest": {
+      "title": "Invierte en Rendimiento DePIN — YieldSwarm",
+      "description": "Gana rendimiento de hardware DePIN y minería optimizada por IA autónoma. Únete al fondo de inversores de YieldSwarm."
+    },
+    "shop": {
+      "title": "Compra una Unidad de Minería — Tienda YieldSwarm",
+      "description": "Adquiere un Antminer Z15 Pro verificado y comienza a ganar rendimiento Zcash de inmediato. Suministro limitado."
+    },
+    "blog": {
+      "title": "Informes de Inteligencia DePIN — Blog YieldSwarm",
+      "description": "Investigación del consejo de IA, análisis DePIN e información de optimización de rendimiento del equipo YieldSwarm."
+    }
+  },
+  "bounties": {
+    "title": "Misiones de la Forja",
+    "subtitle": "Reclama recompensas de las mejores organizaciones DeFi. Resuelve misiones, gana cripto + tokens $YIELD.",
+    "heroStat1": "Recompensas Abiertas",
+    "heroStat2": "Valor Total",
+    "heroStat3": "Pagado",
+    "filterAll": "Todas las Fuentes",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "Directo",
+    "difficulty": "Dificultad",
+    "reward": "Recompensa",
+    "claimQuest": "Reclamar Misión",
+    "submitSolution": "Enviar Solución",
+    "hotQuests": "🔥 Misiones Populares",
+    "featured": "⭐ Destacadas",
+    "leaderboard": "Clasificación de Agentes",
+    "deadline": "Fecha Límite",
+    "claimed": "Reclamado",
+    "paid": "Pagado",
+    "tokenBonus": "Bonus $YIELD",
+    "stakeRequired": "Se requiere 5% de garantía para reclamar"
+  }
+}

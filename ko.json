@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "홈",
+    "fleet": "플릿",
+    "swarm": "스웜",
+    "treasury": "트레저리",
+    "aiStack": "AI 스택",
+    "arena": "아레나",
+    "play": "플레이",
+    "invest": "투자",
+    "shop": "샵",
+    "blog": "블로그",
+    "buyMiner": "마이너 구매"
+  },
+  "hero": {
+    "headline": "DePIN 네이티브 수익 인텔리전스",
+    "sub": "하드웨어 플릿, 프라이버시 채굴, 크로스체인 DeFi 전반에 걸쳐 수익을 최적화하는 자율 AI 에이전트.",
+    "cta": "스웜 참가",
+    "ctaSecondary": "실시간 수익 보기"
+  },
+  "stats": {
+    "nodes": "활성 노드",
+    "yield": "월간 수익",
+    "uptime": "가동률 SLA",
+    "funded": "펀딩됨"
+  },
+  "footer": {
+    "tagline": "탈중앙화 경제를 위한 자율 수익 인프라.",
+    "links": "링크",
+    "legal": "법적 정보",
+    "privacy": "개인정보 처리방침",
+    "terms": "서비스 약관",
+    "risk": "위험 공시"
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "error": "문제가 발생했습니다.",
+    "back": "뒤로",
+    "submit": "제출",
+    "cancel": "취소",
+    "save": "저장",
+    "learnMore": "자세히 보기",
+    "getStarted": "시작하기",
+    "viewAll": "전체 보기",
+    "close": "닫기"
+  },
+  "invest": {
+    "headline": "스웜에 투자",
+    "sub": "DePIN 하드웨어와 자율 AI 최적화 채굴 운영에서 수익을 창출하세요.",
+    "cta": "투자 시작",
+    "minInvestment": "최소 투자금",
+    "expectedYield": "예상 연간 수익률",
+    "lockupPeriod": "락업 기간"
+  },
+  "shop": {
+    "headline": "하드웨어 소유",
+    "sub": "검증된 채굴 장치를 구매하고 즉시 수익을 시작하세요.",
+    "cta": "지금 구매",
+    "price": "가격",
+    "availability": "재고 상황",
+    "unitsLeft": "대 남음",
+    "addToCart": "지금 구매",
+    "breakEven": "손익분기점"
+  },
+  "blog": {
+    "headline": "인텔리전스 리포트",
+    "sub": "AI 위원회 리서치, DePIN 분석, 수익 최적화 인사이트.",
+    "readMore": "더 읽기",
+    "publishedOn": "게시일",
+    "by": "작성자"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — DePIN 수익 최적화 및 자율 채굴 프로토콜",
+      "description": "자율 AI 에이전트가 DePIN 하드웨어 플릿, Zcash 채굴, 크로스체인 DeFi 전반에 걸쳐 수익을 최적화합니다."
+    },
+    "invest": {
+      "title": "DePIN 수익 투자 — YieldSwarm",
+      "description": "DePIN 하드웨어와 자율 AI 최적화 채굴에서 수익을 창출하세요. YieldSwarm 투자자 풀에 참가하세요."
+    },
+    "shop": {
+      "title": "채굴 장치 구매 — YieldSwarm 샵",
+      "description": "검증된 Antminer Z15 Pro를 구매하고 즉시 Zcash 수익 창출을 시작하세요. 한정 수량."
+    },
+    "blog": {
+      "title": "DePIN 인텔리전스 리포트 — YieldSwarm 블로그",
+      "description": "YieldSwarm 팀의 AI 위원회 리서치, DePIN 분석, 수익 최적화 인사이트."
+    }
+  },
+  "bounties": {
+    "title": "대장간의 퀘스트",
+    "subtitle": "최고의 DeFi 조직에서 바운티를 청구하세요. 퀘스트를 해결하고 암호화폐 + $YIELD 토큰을 획득하세요.",
+    "heroStat1": "오픈 바운티",
+    "heroStat2": "총 가치",
+    "heroStat3": "지급됨",
+    "filterAll": "모든 소스",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "직접",
+    "difficulty": "난이도",
+    "reward": "보상",
+    "claimQuest": "퀘스트 청구",
+    "submitSolution": "솔루션 제출",
+    "hotQuests": "🔥 인기 퀘스트",
+    "featured": "⭐ 추천",
+    "leaderboard": "에이전트 리더보드",
+    "deadline": "마감일",
+    "claimed": "청구됨",
+    "paid": "지급됨",
+    "tokenBonus": "$YIELD 보너스",
+    "stakeRequired": "청구하려면 5% 스테이크 필요"
+  }
+}

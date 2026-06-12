@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "fleet": "フリート",
+    "swarm": "スウォーム",
+    "treasury": "トレジャリー",
+    "aiStack": "AIスタック",
+    "arena": "アリーナ",
+    "play": "プレイ",
+    "invest": "投資",
+    "shop": "ショップ",
+    "blog": "ブログ",
+    "buyMiner": "マイナーを購入"
+  },
+  "hero": {
+    "headline": "DePINネイティブ利回りインテリジェンス",
+    "sub": "ハードウェアフリート、プライバシーマイニング、クロスチェーンDeFi全体で利回りを最適化する自律型AIエージェント。",
+    "cta": "スウォームに参加",
+    "ctaSecondary": "ライブ利回りを表示"
+  },
+  "stats": {
+    "nodes": "アクティブノード",
+    "yield": "月間利回り",
+    "uptime": "稼働率SLA",
+    "funded": "資金調達済み"
+  },
+  "footer": {
+    "tagline": "分散型経済のための自律型利回りインフラ。",
+    "links": "リンク",
+    "legal": "法的情報",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "risk": "リスク開示"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました。",
+    "back": "戻る",
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "learnMore": "詳細を見る",
+    "getStarted": "始める",
+    "viewAll": "すべて表示",
+    "close": "閉じる"
+  },
+  "invest": {
+    "headline": "スウォームに投資",
+    "sub": "DePINハードウェアと自律型AI最適化マイニング運用から利回りを獲得。",
+    "cta": "投資を開始",
+    "minInvestment": "最低投資額",
+    "expectedYield": "年間予想利回り",
+    "lockupPeriod": "ロックアップ期間"
+  },
+  "shop": {
+    "headline": "ハードウェアを所有",
+    "sub": "認証済みマイニングユニットを購入して、すぐに収益を上げ始めましょう。",
+    "cta": "今すぐ購入",
+    "price": "価格",
+    "availability": "在庫状況",
+    "unitsLeft": "台残り",
+    "addToCart": "今すぐ購入",
+    "breakEven": "損益分岐点"
+  },
+  "blog": {
+    "headline": "インテリジェンスレポート",
+    "sub": "AIコンソーシアムリサーチ、DePIN分析、利回り最適化インサイト。",
+    "readMore": "続きを読む",
+    "publishedOn": "公開日",
+    "by": "著者"
+  },
+  "meta": {
+    "home": {
+      "title": "YieldSwarm — DePIN利回り最適化・自律型マイニングプロトコル",
+      "description": "自律型AIエージェントがDePINハードウェアフリート、Zcashマイニング、クロスチェーンDeFi全体で利回りを最適化。"
+    },
+    "invest": {
+      "title": "DePIN利回りへの投資 — YieldSwarm",
+      "description": "DePINハードウェアと自律型AI最適化マイニングから利回りを獲得。YieldSwarm投資家プールに参加。"
+    },
+    "shop": {
+      "title": "マイニングユニットを購入 — YieldSwarmショップ",
+      "description": "認証済みAntminer Z15 Proを購入して、すぐにZcash利回りの獲得を開始。数量限定。"
+    },
+    "blog": {
+      "title": "DePINインテリジェンスレポート — YieldSwarmブログ",
+      "description": "YieldSwarmチームによるAIコンソーシアムリサーチ、DePIN分析、利回り最適化インサイト。"
+    }
+  },
+  "bounties": {
+    "title": "鍛冶場のクエスト",
+    "subtitle": "トップDeFi組織からバウンティを請求。クエストを解決して、暗号資産 + $YIELDトークンを獲得。",
+    "heroStat1": "オープンバウンティ",
+    "heroStat2": "総額",
+    "heroStat3": "支払済み",
+    "filterAll": "全ソース",
+    "filterGitHub": "GitHub",
+    "filterGitcoin": "Gitcoin",
+    "filterImmunefi": "Immunefi",
+    "filterHackerOne": "HackerOne",
+    "filterManual": "ダイレクト",
+    "difficulty": "難易度",
+    "reward": "報酬",
+    "claimQuest": "クエストを請求",
+    "submitSolution": "ソリューションを提出",
+    "hotQuests": "🔥 人気クエスト",
+    "featured": "⭐ 注目",
+    "leaderboard": "エージェントランキング",
+    "deadline": "締め切り",
+    "claimed": "請求済み",
+    "paid": "支払済み",
+    "tokenBonus": "$YIELDボーナス",
+    "stakeRequired": "請求には5%のステークが必要"
+  }
+}
